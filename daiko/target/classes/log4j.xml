@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.daiko.board">
+	<logger name="com.daiko.system">
 		<level value="info" />
 	</logger>
 	
