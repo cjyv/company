@@ -19,7 +19,7 @@ public class MainController {
 	@Inject
 	private EmployeeService employeeservice;
 	
-	@RequestMapping(value = "login.do", method = RequestMethod.POST)
+	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public String login(@ModelAttribute EmployeeDTO dto ,Model model, HttpSession session) {
 		String name = employeeservice.loginCheck(dto, session);
 		if(name == null) {
@@ -27,8 +27,17 @@ public class MainController {
 			return "login";
 		}
 		else {
+			model.addAttribute("name",name);
+			model.addAttribute("contentPage", "home.jsp");
 		return "index";
 		}
+	}
+	
+	@RequestMapping(value = "logOut", method = RequestMethod.GET)
+	public String logOut(HttpSession session) {
+		
+		employeeservice.logOut(session);
+		return "login";
 	}
 
 }

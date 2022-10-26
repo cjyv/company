@@ -23,6 +23,7 @@ public class HomeController {
 		return "login";
 	}
 	else {
+		model.addAttribute("contentPage", "home.jsp");
 		return "index";
 	}
 	}
