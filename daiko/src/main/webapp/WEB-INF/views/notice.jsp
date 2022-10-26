@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,12 +36,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <c:forEach items="${noticeList}" var="notice">
                                         <tr>
-                                            <td >Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
+                                            <td >${notice.seq}</td>
+                                            <td>${notice.title }</td>
+                                            <td>${notice.name}</td>
+                                            <td>${notice.n_date}</td>
                                         </tr>
+                                        </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
