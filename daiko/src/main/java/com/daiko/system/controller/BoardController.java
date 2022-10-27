@@ -30,7 +30,6 @@ public class BoardController {
 		noticeList = noticeService.NoticeList();
 		
 		model.addAttribute("contentPage", "notice.jsp");
-		
 		model.addAttribute("noticeList", noticeList);
 		
 		return "index";
@@ -45,6 +44,14 @@ public class BoardController {
 		model.addAttribute("detail", detail);
 		
 		return "index";
+	}
+	@RequestMapping(value = "noticeInsert",method = RequestMethod.GET)
+	public String noticeInsert(Model model) {
+		
+		model.addAttribute("contentPage", "noticeInsert.jsp");
+		
+		return "index";
+		
 	}
 	
 }
