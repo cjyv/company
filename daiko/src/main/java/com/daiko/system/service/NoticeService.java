@@ -7,5 +7,6 @@ public interface NoticeService {
 
 	public List<Map<String, Object>> NoticeList();
 	
+	public Map<String, Object> detail(int noticeNumber); 
 	
 }

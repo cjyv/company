@@ -8,10 +8,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-   <div id="content">
+ <div id="content">
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">お知らせ</h1>
                
@@ -23,29 +24,20 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th width="10%">番号</th>
-                                            <th width="60%">タイトル</th>
-                                            <th width="15%">作成者</th>
-                                            <th width="15%">日付</th>
+                                            <th width="10%">${detail.seq }</th>
+                                            <th width="60%">${detail.title}</th>
+                                            <th width="15%">${detail.name}</th>
+                                            <th width="15%">${detail.n_date}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <c:forEach items="${noticeList}" var="notice">
-                                    
-                                        <tr onclick="location.href='noticeDetail?noticeNumber=${notice.seq}'">
-                                            <td>${notice.seq}</td>
-                                            <td>${notice.title }</td>
-                                            <td>${notice.name}</td>
-                                            <td>${notice.n_date}</td>
-                                        </tr>
-                        
-                                        </c:forEach>
+                                    <tr>
+                                    <td colspan="4">${detail.content}</td>
+                                       
+                                    </tr>    
                                     </tbody>
                                 </table>
                             </div>
-                            <div style="text-align: right">
-					<button class="btn-icon-split">追加</button>
-					</div>
                         </div>
                     </div>
 

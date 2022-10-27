@@ -22,4 +22,10 @@ public class NoticeServiceImpl implements NoticeService{
 		return ndao.noticeList();
 	
 	}
+	
+	@Override
+	public Map<String, Object> detail(int noticeNumber) {
+		// TODO Auto-generated method stub
+		return ndao.noticeDetail(noticeNumber);
+	}
 }

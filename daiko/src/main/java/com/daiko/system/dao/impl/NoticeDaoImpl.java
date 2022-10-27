@@ -21,4 +21,10 @@ public class NoticeDaoImpl implements NoticeDAO{
 	return ss.selectList("notice.noticeList");
 	
 	}
+	
+	@Override
+	public Map<String, Object> noticeDetail(int noticeNumber) {
+		
+		return ss.selectOne("notice.Detail", noticeNumber);
+	}
 }
