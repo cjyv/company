@@ -28,4 +28,11 @@ public class NoticeServiceImpl implements NoticeService{
 		// TODO Auto-generated method stub
 		return ndao.noticeDetail(noticeNumber);
 	}
+	
+	@Override
+	public int insert(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return ndao.noticeInsert(map);
+	}
+	
 }

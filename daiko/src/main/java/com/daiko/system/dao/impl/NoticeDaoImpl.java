@@ -27,4 +27,10 @@ public class NoticeDaoImpl implements NoticeDAO{
 		
 		return ss.selectOne("notice.Detail", noticeNumber);
 	}
+	
+	@Override
+	public int noticeInsert(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return ss.insert("notice.Insert", map);
+	}
 }

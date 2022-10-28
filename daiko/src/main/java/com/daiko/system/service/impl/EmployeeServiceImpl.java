@@ -1,5 +1,7 @@
 package com.daiko.system.service.impl;
 
+import java.util.Map;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -19,13 +21,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 	
 	@Override
 	public String loginCheck(EmployeeDTO dto, HttpSession session) {
-		String name = employedao.loginCheck(dto);
-		if(name != null) {
+		Map<String, Object> map = employedao.loginCheck(dto);
+		if((String)map.get("name") != null) {
 			session.setAttribute("e_id", dto.getE_id());
-			session.setAttribute("name", name);
+			session.setAttribute("name", (String)map.get("name"));
+			session.setAttribute("e_number",map.get("e_number"));
 		}
 		
-		return name;
+		return (String)map.get("name");
 	}
 	@Override
 	public void logOut(HttpSession session) {

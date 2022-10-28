@@ -26,17 +26,17 @@
 							<div class="mb-3">
 								<label for="exampleFormControlInput1" class="form-label">タイトル</label>
 								<input type="text" class="form-control"
-									id="exampleFormControlInput1">
+									id="exampleFormControlInput1" name="title">
 							</div>
 							<div class="mb-3">
 								<label for="exampleFormControlTextarea1" class="form-label">内容</label>
 								<textarea class="form-control" id="exampleFormControlTextarea1"
-									rows="12"></textarea>
+									rows="12" name="content"></textarea>
 							</div>
 							<div>
 								<label for="formFileLg" class="form-label">ファイル</label> <input
 									class="form-control form-control-lg" id="formFileLg"
-									type="file">
+									type="file" name="file">
 							</div>
 							<hr>
 							      <div style="text-align: center">
@@ -48,7 +48,7 @@
 
 			</div>
 			<!-- /.container-fluid -->
-
+		
 		</div>
 		<!-- End of Main Content -->
 </body>

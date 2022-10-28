@@ -11,5 +11,8 @@ select * from notice
 select * from notice where seq = #{noticeNumber}
 </select>
 
+<insert id="Insert" parameterType="map">
+insert into notice(e_number,name,title,content,n_date,file,realFileName) values(#{e_number},#{name},#{title},#{content},now(),#{file},#{realFileName})
+</insert>
 
 </mapper>

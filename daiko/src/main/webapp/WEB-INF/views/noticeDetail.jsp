@@ -31,6 +31,13 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <c:if test="${detail.file != null}">
+                                    <tr>
+                                    <td colspan="4">
+                                    ${detail.realFileName }
+                                    </td>
+                                    </tr>
+                                    </c:if>
                                     <tr>
                                     <td colspan="4">${detail.content}</td>
                                        

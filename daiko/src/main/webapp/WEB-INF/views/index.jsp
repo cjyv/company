@@ -12,7 +12,7 @@
     <meta name="author" content="">
 
     <title>DaikoIWS System - Dashboard</title>
-
+	<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
     <!-- Custom fonts for this template-->
     <link href="resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link

@@ -1,5 +1,7 @@
 package com.daiko.system.dao.impl;
 
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -16,7 +18,7 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 	private SqlSession ss;
 	
 @Override
-public String loginCheck(EmployeeDTO dto) {
+public Map<String, Object> loginCheck(EmployeeDTO dto) {
 	return ss.selectOne("employee.loginCheck",dto);
 }
 

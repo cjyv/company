@@ -9,4 +9,6 @@ public interface NoticeDAO {
 	public List<Map<String, Object>> noticeList();
 	
 	public Map<String,Object> noticeDetail(int noticeNumber);
+	
+	public int noticeInsert(Map<String, Object> map);
 }

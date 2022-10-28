@@ -9,4 +9,6 @@ public interface NoticeService {
 	
 	public Map<String, Object> detail(int noticeNumber); 
 	
+	public int insert(Map<String, Object> map);
+	
 }
