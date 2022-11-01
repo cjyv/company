@@ -14,7 +14,7 @@ import com.daiko.system.dto.EmployeeDTO;
 import com.daiko.system.service.EmployeeService;
 
 @Controller
-public class MainController {
+public class LoginController {
 
 	@Inject
 	private EmployeeService employeeservice;
