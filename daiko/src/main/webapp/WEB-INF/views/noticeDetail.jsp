@@ -34,7 +34,7 @@
                                     <c:if test="${detail.file != null}">
                                     <tr>
                                     <td colspan="4">
-                                    ${detail.realFileName }
+                                   <a href="fileDown?file=${detail.file}&realFileName=${detail.realFileName}" style="text-decoration: none; color: black">${detail.realFileName }</a>
                                     </td>
                                     </tr>
                                     </c:if>
