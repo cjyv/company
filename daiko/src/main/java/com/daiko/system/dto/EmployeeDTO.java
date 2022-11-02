@@ -9,6 +9,8 @@ public class EmployeeDTO {
 	private String e_sex;
 	private String e_address;
 	private String e_phone;
+	private String profile;
+	
 	
 	
 	public int getE_number() {
@@ -52,6 +54,12 @@ public class EmployeeDTO {
 	}
 	public void setE_phone(String e_phone) {
 		this.e_phone = e_phone;
+	}
+	public String getProfile() {
+		return profile;
+	}
+	public void setProfile(String profile) {
+		this.profile = profile;
 	}
 	
 	

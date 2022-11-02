@@ -11,4 +11,5 @@ public interface EmployeeDAO {
 	
 	public Map<String, Object> loginCheck(EmployeeDTO dto);
 	
+	public Map<String, Object> profile(EmployeeDTO dto);
 }

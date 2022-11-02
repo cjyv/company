@@ -34,4 +34,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public void logOut(HttpSession session) {
 		session.invalidate();
 	}
+	
+	@Override
+	public Map<String, Object> profile(EmployeeDTO dto, HttpSession session) {
+		int number = Integer.parseInt((String.valueOf(session.getAttribute("e_number"))));
+		dto.setE_number(number);
+		Map<String, Object> map = employedao.profile(dto);
+		return map;
+	}
+	
+	
 }

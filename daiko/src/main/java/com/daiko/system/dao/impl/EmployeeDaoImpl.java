@@ -21,6 +21,9 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 public Map<String, Object> loginCheck(EmployeeDTO dto) {
 	return ss.selectOne("employee.loginCheck",dto);
 }
-
+@Override
+public Map<String, Object> profile(EmployeeDTO dto) {
+	return ss.selectOne("employee.profile", dto);
+}
 	
 }

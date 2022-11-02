@@ -3,9 +3,12 @@
 <mapper namespace="employee">
 
 <select id="loginCheck" resultType="map">
-select * from employee where e_id=#{e_id} and password=#{password}
+select e_id,name,e_number from employee where e_id=#{e_id} and password=#{password}
 
 </select>
 
+<select id="profile" resultType="map">
+select * from employee where e_number = #{e_number}
+</select>
 
 </mapper>
