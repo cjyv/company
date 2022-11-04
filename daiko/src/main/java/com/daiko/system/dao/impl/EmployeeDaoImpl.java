@@ -22,8 +22,13 @@ public Map<String, Object> loginCheck(EmployeeDTO dto) {
 	return ss.selectOne("employee.loginCheck",dto);
 }
 @Override
-public Map<String, Object> profile(EmployeeDTO dto) {
-	return ss.selectOne("employee.profile", dto);
+public Map<String, Object> profile(int e_number) {
+	return ss.selectOne("employee.profile", e_number);
+}
+
+@Override
+public int profileUpdate(Map<String, Object> map) {
+	return ss.update("employee.profileUpdate", map);
 }
 	
 }

@@ -8,9 +8,9 @@ public class EmployeeDTO {
 	private String password;
 	private String e_sex;
 	private String e_address;
-	private String e_phone;
+	private int e_phone;
 	private String profile;
-	
+
 	
 	
 	public int getE_number() {
@@ -49,10 +49,10 @@ public class EmployeeDTO {
 	public void setE_address(String e_address) {
 		this.e_address = e_address;
 	}
-	public String getE_phone() {
+	public int getE_phone() {
 		return e_phone;
 	}
-	public void setE_phone(String e_phone) {
+	public void setE_phone(int e_phone) {
 		this.e_phone = e_phone;
 	}
 	public String getProfile() {

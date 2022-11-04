@@ -72,6 +72,7 @@ public class BoardController {
 		
 		UUID ui = UUID.randomUUID();
 		
+	if(file.getSize()>0) {	
 		String realFileName = file.getOriginalFilename();
 		String File = ui+"_"+realFileName;
 		File saveFile = new File(uploadPath+File);
@@ -81,6 +82,8 @@ public class BoardController {
 		
 		map.put("file",File);
 		map.put("realFileName",realFileName);
+		
+	}
 		map.put("name", session.getAttribute("name"));
 		map.put("e_number", session.getAttribute("e_number"));
 		

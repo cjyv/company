@@ -10,6 +10,6 @@ public interface EmployeeService {
 
 public String loginCheck(EmployeeDTO dto, HttpSession session);
 public void logOut(HttpSession session);
-public Map<String, Object> profile(EmployeeDTO dto,HttpSession session);
-	
+public Map<String, Object> profile(HttpSession session);
+public int profileUpdate(Map<String, Object>map);	
 }

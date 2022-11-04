@@ -3,12 +3,18 @@
 <mapper namespace="employee">
 
 <select id="loginCheck" resultType="map">
-select e_id,name,e_number from employee where e_id=#{e_id} and password=#{password}
+select e_id,name,e_number,profile from employee where e_id=#{e_id} and password=#{password}
 
 </select>
 
-<select id="profile" resultType="map">
+<select id="profile" resultType="map" parameterType="int">
 select * from employee where e_number = #{e_number}
 </select>
+<update id="profileUpdate" parameterType="map">
+update employee set name = #{name},e_address =#{e_address},e_phone=#{e_phone}
+<if test="password != null or password !=''">,password=#{password}</if>
+<if test="profile != null or profile !=''">,profile=#{profile}</if>
+where e_number = #{e_number}
+</update>
 
 </mapper>

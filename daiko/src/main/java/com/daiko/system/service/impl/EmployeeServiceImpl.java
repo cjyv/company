@@ -22,13 +22,23 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public String loginCheck(EmployeeDTO dto, HttpSession session) {
 		Map<String, Object> map = employedao.loginCheck(dto);
-		if((String)map.get("name") != null) {
-			session.setAttribute("e_id", dto.getE_id());
-			session.setAttribute("name", (String)map.get("name"));
-			session.setAttribute("e_number",map.get("e_number"));
+		try {
+			String name = (String)map.get("name");
+		
+				session.setAttribute("e_id", dto.getE_id());
+				session.setAttribute("name", name);
+				session.setAttribute("e_number",map.get("e_number"));
+				session.setAttribute("profilePhoto",map.get("profile"));
+			
+			
+			return name;
+			
+		} catch (Exception e) {
+			String name = null;
+			return null;
 		}
 		
-		return (String)map.get("name");
+	
 	}
 	@Override
 	public void logOut(HttpSession session) {
@@ -36,11 +46,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 	
 	@Override
-	public Map<String, Object> profile(EmployeeDTO dto, HttpSession session) {
-		int number = Integer.parseInt((String.valueOf(session.getAttribute("e_number"))));
-		dto.setE_number(number);
-		Map<String, Object> map = employedao.profile(dto);
+	public Map<String, Object> profile(HttpSession session) {
+		int e_number = Integer.parseInt((String.valueOf(session.getAttribute("e_number"))));
+		Map<String, Object> map = employedao.profile(e_number);
 		return map;
+	}
+	@Override
+	public int profileUpdate(Map<String, Object>map) {
+		return employedao.profileUpdate(map);
 	}
 	
 	
