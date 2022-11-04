@@ -77,11 +77,7 @@ public class EmployeeController {
 		String tellphone = tellphone1+tellphone2+tellphone3;
 		map.put("e_phone", tellphone);
 	
-		if(map.get("passwordChange1")!=null || (String)map.get("passwordChange1")!="") {
-			map.put("password",map.get("passwordChange1"));
-		}else {
-			map.put("password", null);
-		}
+	
 		UUID ui = UUID.randomUUID();
 		
 		String oldProfile= String.valueOf(map.get("oldProfile"));
@@ -95,7 +91,14 @@ public class EmployeeController {
 		}
 	
 		map.put("e_number", session.getAttribute("e_number"));
-		employeeservice.profileUpdate(map);
+		if(employeeservice.profileUpdate(map)==1) {
+			model.addAttribute("name",map.get("name"));
+			session.setAttribute("name", map.get("name"));
+			model.addAttribute("profilePhoto", map.get("profile"));
+			session.setAttribute("profilePhoto", map.get("profile"));
+		}
+		
+		
 		/*
 		dto.setE_phone(tellphone);
 		if(password1!=null) {

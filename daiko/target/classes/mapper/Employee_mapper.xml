@@ -12,7 +12,6 @@ select * from employee where e_number = #{e_number}
 </select>
 <update id="profileUpdate" parameterType="map">
 update employee set name = #{name},e_address =#{e_address},e_phone=#{e_phone}
-<if test="password != null or password !=''">,password=#{password}</if>
 <if test="profile != null or profile !=''">,profile=#{profile}</if>
 where e_number = #{e_number}
 </update>

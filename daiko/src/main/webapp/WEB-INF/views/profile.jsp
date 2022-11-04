@@ -18,7 +18,7 @@
             <div class="card shadow mb-4">
             <div class="card-body">
   
-			<form action="profileUpdate.do" method="post" enctype="multipart/form-data" name="profileForm">
+			<form action="profileUpdate.do" method="post" enctype="multipart/form-data" name="profileForm" onsubmit="return Change()" >
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail4">ID</label>
@@ -27,16 +27,6 @@
     <div class="form-group col-md-6">
       <label for="inputPassword4">名前</label>
       <input type="text" class="form-control" name="name" id="inputName4" value="${profile.name}">
-    </div>
-  </div>
-    <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputEmail4">パスワード変更 <span style="color: red;font-size: 5px">*変更のみ記入してください。</span></label>
-      <input type="password" class="form-control" id="passwordChange1" name="passwordChange1">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="inputPassword4">パスワード確認 <span style="color: red;font-size: 5px">*変更のみ記入してください。</span></label>
-      <input type="password" class="form-control" id="passwordChange2" name="passwordChange2">
     </div>
   </div>
   <div class="form-group">
@@ -74,10 +64,12 @@
     <input type="hidden" name="oldProfile" value="${profile.profile }"> 
   </div>
       </div>
+      <div style="text-align: center;">
+            <button class="btn btn-danger" type="button" onclick="passwordChange()">パスワード変更</button>
     <button type="submit" class="btn btn-primary">修正</button>
-    
+     </div>
 </form>
-            
+
             </div>
             </div>
             </div>
@@ -103,6 +95,9 @@ const inputImage = document.getElementById("inputGroupFile01")
 inputImage.addEventListener("change", e => {
     readImage(e.target)
 })
+
 </script>
+	<script src="resources/js/validation.js"></script>
+
 </body>
 </html>
