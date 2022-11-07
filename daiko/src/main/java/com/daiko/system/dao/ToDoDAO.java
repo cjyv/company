@@ -9,4 +9,5 @@ public interface ToDoDAO {
 	
 	public List<Map<String, Object>> todoList(Map<String, Object>map);
 	
+	public Map<String, Object> todoDetail(int seq);
 }

@@ -35,4 +35,10 @@ public class ToDoServiceImpl implements ToDoService {
 		
 		return todoList;
 	}
+	
+	@Override
+	public Map<String, Object> todoDetail(int seq) {
+		
+		return tdo.todoDetail(seq);
+	}
 }

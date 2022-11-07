@@ -16,7 +16,7 @@ fetch("todoList")
 	let str="";
 	for (var i = 0; i < res.length; i++) {
 		
-  	 str+="<tr><td><input type='checkbox'></td><td id='seq'>"+res[i].seq+"</td><td id='title'>"+res[i].title+"</td><td id='startTime'>"+res[i].T_dateTime+"</td><td id='endTime'>"+res[i].T_endTime+"</td><td id='state'>"+res[i].state+"</td></tr>"
+  	 str+="<tr onclick=todoForm("+res[i].seq+")><td><input type='checkbox'></td><td id='seq'>"+res[i].seq+"</td><td id='title'>"+res[i].title+"</td><td id='startTime'>"+res[i].T_dateTime+"</td><td id='endTime'>"+res[i].T_endTime+"</td><td id='state'>"+res[i].state+"</td></tr>"
 	}
 	document.getElementById("tbody").innerHTML=str;
   	
@@ -51,7 +51,7 @@ fetch("todoList")
 					</div>
 
 					<div class="btnDiv" style="text-align: right; margin-bottom: 15px">
-						<button class="btn btn-primary" onclick="todoForm()">追加</button>
+						<button class="btn btn-primary" onclick="todoForm(0)">追加</button>
 						<button class="btn btn-danger">削除</button>
 				
 					</div>
@@ -78,9 +78,15 @@ fetch("todoList")
 		</div>
 	</div>
 <script type="text/javascript">
-function todoForm() {
 
-	window.open("todoForm","todoForm",width = 300, height = 300, top = 200, left = 200);
+function todoForm(seq) {
+
+	 var url = "todoForm?seq="+seq;
+     var name = "todoForm";
+     var option = "width = 665, height = 600, top = 200, left = 200"
+     window.open(url, name, option);
+	
+	window.open(url,name,option);
 } 
 </script>
 </body>

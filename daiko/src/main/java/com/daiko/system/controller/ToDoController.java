@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.daiko.system.service.ToDoService;
@@ -36,7 +37,14 @@ public class ToDoController {
 		return todoservice.todoList(session);
 	}
 	@RequestMapping(value ="todoForm" )
-	public String todoForm() {
+	public String todoForm(@RequestParam int seq,Model model) {
+		
+		if(seq!=0) {
+			Map<String, Object> todoDetailMap = todoservice.todoDetail(seq);
+			model.addAttribute("detail", todoDetailMap);
+		}
+		
+		
 		return "popup/todoForm";
 		
 	}

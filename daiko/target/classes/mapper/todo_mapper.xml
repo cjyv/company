@@ -3,7 +3,7 @@
 <mapper namespace="todo">
 
 <select id="list" parameterType="map" resultType="map">
-select seq, title, content,referenceFile,date_format(T_dateTime,'%Y-%m-%d') as T_dateTime,date_format(T_endTime,'%Y-%m-%d') as T_endTime,state from todo
+select seq, title,date_format(T_dateTime,'%Y-%m-%d') as T_dateTime,date_format(T_endTime,'%Y-%m-%d') as T_endTime,state from todo
  where 
  <if test="day!=null">
  T_dateTime <![CDATA[<=]]> #{day} 
@@ -15,6 +15,11 @@ select seq, title, content,referenceFile,date_format(T_dateTime,'%Y-%m-%d') as T
  </if>
  </select>
 
+<select id="detail" resultType="map" parameterType="int">
+select seq,title,content,referenceFile,date_format(T_dateTime,'%Y-%m-%d') as T_dateTime,date_format(T_endTime,'%Y-%m-%d') as T_endTime,
+date_format(T_dateTime,'%H:%i') as startTime,date_format(T_endTime,'%H:%i') as endTime,e_number,state
+from todo where seq=#{seq}
+</select>
 
 
 </mapper>

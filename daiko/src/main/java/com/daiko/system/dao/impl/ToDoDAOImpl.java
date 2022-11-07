@@ -22,4 +22,9 @@ public class ToDoDAOImpl implements ToDoDAO {
 		return ss.selectList("todo.list",map);
 	}
 	
+	@Override
+	public Map<String, Object> todoDetail(int seq) {
+		// TODO Auto-generated method stub
+		return ss.selectOne("todo.detail", seq);
+	}
 }
