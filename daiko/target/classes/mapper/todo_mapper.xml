@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="todo">
+
+<select id="list" parameterType="map" resultType="map">
+select seq, title, content,referenceFile,date_format(T_dateTime,'%Y-%m-%d') as T_dateTime,date_format(T_endTime,'%Y-%m-%d') as T_endTime,state from todo
+ where 
+ <if test="day!=null">
+ T_dateTime <![CDATA[<=]]> #{day} 
+ and T_endTime <![CDATA[>=]]> #{day} and 
+ </if>
+ e_number=#{e_number}
+ <if test="state==null">
+ and state != '対応済'
+ </if>
+ </select>
+
+
+
+</mapper>
