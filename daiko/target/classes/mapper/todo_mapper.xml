@@ -17,9 +17,14 @@ select seq, title,date_format(T_dateTime,'%Y-%m-%d') as T_dateTime,date_format(T
 
 <select id="detail" resultType="map" parameterType="int">
 select seq,title,content,referenceFile,date_format(T_dateTime,'%Y-%m-%d') as T_dateTime,date_format(T_endTime,'%Y-%m-%d') as T_endTime,
-date_format(T_dateTime,'%H:%i') as startTime,date_format(T_endTime,'%H:%i') as endTime,e_number,state
+e_number,state,realFileName
 from todo where seq=#{seq}
 </select>
+
+<insert id="insert" parameterType="map">
+insert into todo (title,content,T_dateTime,T_endTime,state,e_number,referenceFile,realFileName) values(#{title},#{content},#{T_dateTime},#{T_endTime},#{state},#{e_number},
+<if test="referenceFile!=null">#{referenceFile},#{realFileName}</if><if test="referenceFile==null">null,null</if>)
+</insert>
 
 
 </mapper>

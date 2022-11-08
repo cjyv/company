@@ -8,6 +8,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
+
+	
+
 fetch("todoList")
 .then(function(res) {
 	return res.json();
@@ -16,13 +19,13 @@ fetch("todoList")
 	let str="";
 	for (var i = 0; i < res.length; i++) {
 		
-  	 str+="<tr onclick=todoForm("+res[i].seq+")><td><input type='checkbox'></td><td id='seq'>"+res[i].seq+"</td><td id='title'>"+res[i].title+"</td><td id='startTime'>"+res[i].T_dateTime+"</td><td id='endTime'>"+res[i].T_endTime+"</td><td id='state'>"+res[i].state+"</td></tr>"
+  	 str+="<tr><td><input type='checkbox' class='check' value="+res[i].seq+"></td><td id='seq'  onclick=todoForm("+res[i].seq+")>"+res[i].seq+"</td><td id='title'  onclick=todoForm("+res[i].seq+")>"+res[i].title+"</td><td id='startTime' onclick=todoForm("+res[i].seq+")>"+res[i].T_dateTime+"</td><td id='endTime'onclick=todoForm("+res[i].seq+")>"+res[i].T_endTime+"</td><td id='state'onclick=todoForm("+res[i].seq+")>"+res[i].state+"</td></tr>"
 	}
 	document.getElementById("tbody").innerHTML=str;
-  	
+	
+
   	
   });
-  
 
 </script>
 </head>
@@ -52,8 +55,7 @@ fetch("todoList")
 
 					<div class="btnDiv" style="text-align: right; margin-bottom: 15px">
 						<button class="btn btn-primary" onclick="todoForm(0)">追加</button>
-						<button class="btn btn-danger">削除</button>
-				
+						<button class="btn btn-danger" type="button" onclick="checkDelete()">削除</button>
 					</div>
 					<div class="table-responsive">
 						<table class="table table-hover" width="100%" cellspacing="0"
@@ -88,6 +90,16 @@ function todoForm(seq) {
 	
 	window.open(url,name,option);
 } 
+
+function checkDelete() {
+	var list =document.querySelectorAll(".check");
+	for (var i = 0; i < list.length; i++) {
+		if (list[i].checked) {
+			
+		}
+	}
+}
+
 </script>
 </body>
 </html>

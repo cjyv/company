@@ -27,4 +27,10 @@ public class ToDoDAOImpl implements ToDoDAO {
 		// TODO Auto-generated method stub
 		return ss.selectOne("todo.detail", seq);
 	}
+	
+@Override
+	public int todoInsert(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return ss.insert("todo.insert", map);
+	}
 }

@@ -10,5 +10,7 @@ public interface ToDoService {
 	
 	public List<Map<String, Object>> todoList(HttpSession session);
 	
-	public Map<String, Object> todoDetail(int seq);
+	public Map<String, Object> todoDetail(int seq);  
+	
+	public int todoInsert(Map<String, Object> map, HttpSession session);
 }

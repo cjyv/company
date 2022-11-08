@@ -41,4 +41,11 @@ public class ToDoServiceImpl implements ToDoService {
 		
 		return tdo.todoDetail(seq);
 	}
+	
+	@Override
+	public int todoInsert(Map<String, Object> map, HttpSession session) {
+		
+		map.put("e_number", session.getAttribute("e_number"));
+		return tdo.todoInsert(map);
+	}
 }
