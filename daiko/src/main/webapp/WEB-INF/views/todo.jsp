@@ -19,7 +19,7 @@ fetch("todoList")
 	let str="";
 	for (var i = 0; i < res.length; i++) {
 		
-  	 str+="<tr><td><input type='checkbox' class='check' value="+res[i].seq+"></td><td id='seq'  onclick=todoForm("+res[i].seq+")>"+res[i].seq+"</td><td id='title'  onclick=todoForm("+res[i].seq+")>"+res[i].title+"</td><td id='startTime' onclick=todoForm("+res[i].seq+")>"+res[i].T_dateTime+"</td><td id='endTime'onclick=todoForm("+res[i].seq+")>"+res[i].T_endTime+"</td><td id='state'onclick=todoForm("+res[i].seq+")>"+res[i].state+"</td></tr>"
+  	 str+="<tr><td><input type='checkbox' class='check' name = 'check' value="+res[i].seq+"></td><td id='seq' onclick=todoForm("+res[i].seq+")>"+res[i].seq+"</td><td id='title'  onclick=todoForm("+res[i].seq+")>"+res[i].title+"</td><td id='startTime' onclick=todoForm("+res[i].seq+")>"+res[i].T_dateTime+"</td><td id='endTime'onclick=todoForm("+res[i].seq+")>"+res[i].T_endTime+"</td><td id='state'onclick=todoForm("+res[i].seq+")>"+res[i].state+"</td></tr>"
 	}
 	document.getElementById("tbody").innerHTML=str;
 	
@@ -54,10 +54,11 @@ fetch("todoList")
 					</div>
 
 					<div class="btnDiv" style="text-align: right; margin-bottom: 15px">
-						<button class="btn btn-primary" onclick="todoForm(0)">追加</button>
+						<button class="btn btn-primary" type="button" onclick="todoForm(0)">追加</button>
 						<button class="btn btn-danger" type="button" onclick="checkDelete()">削除</button>
 					</div>
 					<div class="table-responsive">
+					<form name="tfm">
 						<table class="table table-hover" width="100%" cellspacing="0"
 							style="text-align: center">
 							<thead>
@@ -74,6 +75,7 @@ fetch("todoList")
 								
 							</tbody>
 						</table>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -82,7 +84,7 @@ fetch("todoList")
 <script type="text/javascript">
 
 function todoForm(seq) {
-
+	console.log("why");
 	 var url = "todoForm?seq="+seq;
      var name = "todoForm";
      var option = "width = 665, height = 600, top = 200, left = 200"
@@ -91,13 +93,33 @@ function todoForm(seq) {
 	window.open(url,name,option);
 } 
 
+
+
+
 function checkDelete() {
-	var list =document.querySelectorAll(".check");
+	var cofirm = window.confirm("削除しますか？");
+	if (cofirm) {
+		
+	
+	
+	var list = document.querySelectorAll(".check");
+	var checkList=[];
 	for (var i = 0; i < list.length; i++) {
-		if (list[i].checked) {
-			
+		if(list[i].checked){
+			checkList.push(list[i]);
+			console.log(checkList);
 		}
 	}
+	if(checkList.length!=0){
+		var tfm = document.tfm;
+		tfm.method = "post";
+		tfm.action = "todoDelete";
+		tfm.submit();
+	}else{
+		alert("削除する項目をチェックしてください。");
+	}
+	}
+	
 }
 
 </script>

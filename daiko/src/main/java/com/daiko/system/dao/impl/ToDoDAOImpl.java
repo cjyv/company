@@ -33,4 +33,15 @@ public class ToDoDAOImpl implements ToDoDAO {
 		// TODO Auto-generated method stub
 		return ss.insert("todo.insert", map);
 	}
+
+@Override
+public int todoDelete(List<Integer> list) {
+	// TODO Auto-generated method stub
+	return ss.delete("todo.delete", list);
+}
+@Override
+public List<String> todoFileDelete(List<Integer> list) {
+	// TODO Auto-generated method stub
+	return ss.selectList("todo.fileDelete",list);
+}
 }

@@ -12,4 +12,8 @@ public interface ToDoDAO {
 	public Map<String, Object> todoDetail(int seq);
 	
 	public int todoInsert(Map<String, Object> map);
+	
+	public int todoDelete(List<Integer> list);
+	
+	public List<String> todoFileDelete(List<Integer> list);
 }

@@ -3,7 +3,7 @@
 <mapper namespace="todo">
 
 <select id="list" parameterType="map" resultType="map">
-select seq, title,date_format(T_dateTime,'%Y-%m-%d') as T_dateTime,date_format(T_endTime,'%Y-%m-%d') as T_endTime,state from todo
+select seq, title,date_format(T_dateTime,'%Y-%m-%d') as T_dateTime,date_format(T_endTime,'%Y-%m-%d') as T_endTime,state,referenceFile from todo
  where 
  <if test="day!=null">
  T_dateTime <![CDATA[<=]]> #{day} 
@@ -26,5 +26,12 @@ insert into todo (title,content,T_dateTime,T_endTime,state,e_number,referenceFil
 <if test="referenceFile!=null">#{referenceFile},#{realFileName}</if><if test="referenceFile==null">null,null</if>)
 </insert>
 
+<delete id="delete" parameterType="integer">
+delete from todo where seq in (<foreach collection="list" item="checked" separator=",">#{checked}</foreach>)
+</delete>
+
+<select id="fileDelete" parameterType="integer" resultType="String">
+select referenceFile from todo where seq in (<foreach collection="list" item="checked" separator=",">#{checked}</foreach>)
+</select>
 
 </mapper>

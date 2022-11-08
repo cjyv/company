@@ -28,7 +28,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.daiko.system.service.NoticeService;
 
 @Controller
-public class BoardController {
+public class NoticeController {
 
 	@Inject
  	private NoticeService noticeService;

@@ -13,4 +13,8 @@ public interface ToDoService {
 	public Map<String, Object> todoDetail(int seq);  
 	
 	public int todoInsert(Map<String, Object> map, HttpSession session);
-}
+	
+	public int todoDelete(List<Integer>list);
+	
+	public void todoFileDelete(List<Integer>list);
+ }

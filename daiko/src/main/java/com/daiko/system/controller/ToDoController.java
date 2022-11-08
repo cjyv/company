@@ -3,6 +3,8 @@ package com.daiko.system.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -20,6 +22,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.daiko.system.service.ToDoService;
+
+
 
 
 
@@ -84,6 +88,17 @@ public class ToDoController {
 		 out1.println(sb1);
 		 out1.flush();
 		
+	}
+	@RequestMapping(value = "todoDelete", method = RequestMethod.POST)
+	public String todoDelete(Integer[] check, Model model,HttpSession session) {
+		List<Integer> list = Arrays.asList(check);
+		
+		todoservice.todoFileDelete(list);
+		todoservice.todoDelete(list);
+		
+		
+	
+		return ToDo(model, session);
 	}
 
 	

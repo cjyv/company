@@ -142,17 +142,17 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">スケジュール設定</h6>
                         <a class="collapse-item" href="todo">ToDo</a>
-                        <a class="collapse-item" href="register.html">カレンダー</a>
+                        <a class="collapse-item" href="calendar">カレンダー</a>
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">メッセージ設定</h6>
-                        <a class="collapse-item" href="404.html">メッセージ</a>
+                        <a class="collapse-item" href="#">メッセージ</a>
                     </div>
                 </div>
             </li>
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Charts</span></a>
             </li>

@@ -1,5 +1,6 @@
 package com.daiko.system.service.impl;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -19,7 +20,7 @@ public class ToDoServiceImpl implements ToDoService {
 	
 	@Inject
 	private ToDoDAO tdo;
-	
+	private final String uploadImagePath ="C:\\Users\\choij\\Desktop\\test(java)\\daiko\\src\\main\\webapp\\resources\\img/";
 	@Override
 	public List<Map<String, Object>> todoList(HttpSession session) {
 		
@@ -48,4 +49,26 @@ public class ToDoServiceImpl implements ToDoService {
 		map.put("e_number", session.getAttribute("e_number"));
 		return tdo.todoInsert(map);
 	}
+	
+	@Override
+	public int todoDelete(List<Integer> list) {
+		
+		return tdo.todoDelete(list);
+	}
+	
+	@Override
+	public void todoFileDelete(List<Integer> list) {
+		
+		List<String> deleteList = tdo.todoFileDelete(list);
+		if(deleteList!=null) {
+		for (String deletefile : deleteList) {
+			if (deletefile!=null) {
+				File file = new File(uploadImagePath+deletefile);
+				file.delete();
+			}
+		}
+		
+		}
+	}
+	
 }
