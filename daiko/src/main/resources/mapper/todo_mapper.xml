@@ -5,14 +5,27 @@
 <select id="list" parameterType="map" resultType="map">
 select seq, title,date_format(T_dateTime,'%Y-%m-%d') as T_dateTime,date_format(T_endTime,'%Y-%m-%d') as T_endTime,state,referenceFile from todo
  where 
- <if test="day!=null">
- T_dateTime <![CDATA[<=]]> #{day} 
- and T_endTime <![CDATA[>=]]> #{day} and 
+ <if test='searchType=="null"'>
+ state != '対応済' and
+ </if>
+ <if test='searchType!="null" and searchType=="day" and searchTxt !="null"'>
+ state != '対応済' and
+ T_dateTime <![CDATA[<=]]> #{searchTxt} 
+ and T_endTime <![CDATA[>=]]> #{searchTxt} and
+ </if>
+  <if test='searchType!="null" and searchType=="content" and searchTxt !="null"'>
+  state != '対応済' and
+content like CONCAT('%', #{searchTxt}, '%') and
+ </if>
+   <if test='searchType!="null" and searchType=="title" and searchTxt !="null"'>
+   state != '対応済' and
+title like CONCAT('%', #{searchTxt}, '%') and
+ </if>
+ 
+ <if test='searchType!="" and searchType=="state" and searchTxt !=""'>
+  state like CONCAT('%', #{searchTxt}, '%') and
  </if>
  e_number=#{e_number}
- <if test="state==null">
- and state != '対応済'
- </if>
  </select>
 
 <select id="detail" resultType="map" parameterType="int">

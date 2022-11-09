@@ -8,7 +8,7 @@ import javax.servlet.http.HttpSession;
 public interface ToDoService {
 
 	
-	public List<Map<String, Object>> todoList(HttpSession session);
+	public List<Map<String, Object>> todoList(Map<String, Object>map, HttpSession session);
 	
 	public Map<String, Object> todoDetail(int seq);  
 	

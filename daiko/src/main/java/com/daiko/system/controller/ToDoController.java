@@ -44,10 +44,9 @@ public class ToDoController {
 	
 	@ResponseBody
 	@RequestMapping(value = "todoList")
-	public List<Map<String, Object>> ToDoList(HttpSession session){
+	public List<Map<String, Object>> ToDoList(@RequestParam Map<String, Object>map, HttpSession session){
 		
-		
-		return todoservice.todoList(session);
+		return todoservice.todoList(map,session);
 	}
 	@RequestMapping(value ="todoForm" )
 	public String todoForm(@RequestParam int seq,Model model) {
@@ -100,6 +99,7 @@ public class ToDoController {
 	
 		return ToDo(model, session);
 	}
+
 
 	
 }

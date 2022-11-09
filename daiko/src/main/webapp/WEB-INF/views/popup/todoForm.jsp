@@ -95,7 +95,7 @@
 						</form>
 					</div>
 				</div>
-
+</div>
 			</div>
 			<!-- /.container-fluid -->
 
@@ -109,7 +109,7 @@
 				form.target="_self";
 				form.method="post";
 					form.enctype="multipart/form-data";
-				var confirm = window.confirm("この内容をToDoに通過しますか？");
+				var confirm = window.confirm("この内容をToDoに追加しますか？");
 				/*	
 					var title = document.getElementById("title").value;
 					var content = document.getElementById("content").value;

@@ -22,17 +22,14 @@ public class ToDoServiceImpl implements ToDoService {
 	private ToDoDAO tdo;
 	private final String uploadImagePath ="C:\\Users\\choij\\Desktop\\test(java)\\daiko\\src\\main\\webapp\\resources\\img/";
 	@Override
-	public List<Map<String, Object>> todoList(HttpSession session) {
+	public List<Map<String, Object>> todoList(Map<String, Object> map,HttpSession session) {
 		
-	
-		
-		Map<String, Object> map = new HashMap<String, Object>();
+
 		
 		
 		map.put("e_number", session.getAttribute("e_number"));
-		
 		List<Map<String, Object>> todoList = tdo.todoList(map);
-	
+		
 		
 		return todoList;
 	}
