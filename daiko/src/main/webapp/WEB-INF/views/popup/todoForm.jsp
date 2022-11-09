@@ -140,13 +140,18 @@
 						alert("終了予定日を記入してください。");
 						fmt.T_endTime.focus();
 						e.preventdefault();
-					} else if (state == null || state == "") {
+					}else if (T_dateTime > T_endTime) {
+						alert("終了予定日は開始日の前日は登録出来ません。");
+						fmt.T_endTime.focus();
+						e.preventdefault();
+					} 
+
+					else if (state == null || state == "") {
 						alert("状況を記入してください。");
 						fmt.state.focus();
 						e.preventdefault();
 					} else {
 						document.fmt.submit();
-					
 					
 						
 					

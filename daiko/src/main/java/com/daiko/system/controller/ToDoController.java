@@ -79,6 +79,7 @@ public class ToDoController {
 		 StringBuffer sb1 = new StringBuffer();
 		 sb1.append("<script type='text/javascript'>");
 		 sb1.append("alert('追加成功しました。');");
+		 sb1.append("opener.location.reload();");
 		 sb1.append("window.close();");
 		 sb1.append("</script>");
 
