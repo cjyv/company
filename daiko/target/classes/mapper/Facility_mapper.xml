@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="facility">
+
+<select id="list" parameterType="map" resultType="map">
+
+select seq,facilityNo,date_format(runingTime,'%Y-%m-%d %H:%i') as runingTime,e_number,reference,catalog from facility where runingTime  between #{startDay} and #{endDay}
+
+
+
+</select>
+
+
+
+</mapper>
