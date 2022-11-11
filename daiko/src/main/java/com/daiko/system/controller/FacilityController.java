@@ -36,7 +36,7 @@ public class FacilityController {
 	@ResponseBody
 	@RequestMapping(value = "facilitySchedule")
 	public List<Map<String, Object>> facilitySchedule(@RequestParam Map<String,Object>map,HttpSession session){
-		System.out.println(fs.facilitySchedule(map, session));
+		
 		return fs.facilitySchedule(map, session);
 	}
 	
