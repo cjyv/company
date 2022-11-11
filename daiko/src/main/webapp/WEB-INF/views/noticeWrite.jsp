@@ -22,7 +22,7 @@
 			<div class="card shadow mb-4">
 				<div class="card-body">
 					<div class="table-responsive">
-						<form action="noticeInsert.do" method="post" enctype="multipart/form-data" >
+						<form action="noticeInsert.do" method="post" name="fmt" id="fmt" enctype="multipart/form-data"  onsubmit="return check()">
 							<div class="mb-3">
 								<label for="exampleFormControlInput1" class="form-label">タイトル</label>
 								<input type="text" class="form-control"
@@ -51,5 +51,41 @@
 		
 		</div>
 		<!-- End of Main Content -->
+		
+		<script type="text/javascript">
+		function check(e) {
+			var confirm = window.confirm("この内容をお知らせに追加しますか？");
+			/*	
+				var title = document.getElementById("title").value;
+				var content = document.getElementById("content").value;
+				var T_dateTime = document.getElementById("T_dateTime").value;
+				var T_endTime = document.getElementById("T_endTime").value;
+				var state = document.getElementById("state").value;
+			 */
+			var title = fmt.title.value;
+			var content = fmt.content.value;
+			
+	
+
+			if (confirm) {
+				if (title == null || title == "") {
+					alert("タイトルを記入してください。");
+					fmt.title.focus();
+					return false;
+				} else if (content == null || content == "") {
+					alert("内容を記入してください。");
+					fmt.content.focus();
+					e.preventdefault();
+					return false;
+				} 
+
+				return true;
+
+			} else {
+				return false;
+			}
+		}
+		
+		</script>
 </body>
 </html>

@@ -25,16 +25,19 @@ public class FacilityServiceImpl implements FacilityService{
 	
 	@Override
 	public List<Map<String, Object>> facilitySchedule(Map<String, Object> map,HttpSession session) {
+		//schedule logic mine
 		Calendar calendar  = Calendar.getInstance();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		SimpleDateFormat sdf2 = new SimpleDateFormat("MM/dd(E)");
 		
 		if (map.get("startDay").equals("null")) {
 			calendar.setTime(new Date());		
+			
 		}
 		else {
 			String startDay = String.valueOf(map.get("startDay"));
-			System.out.println(startDay);
+		
+			
 			try {
 				Date date = sdf.parse(startDay);
 				calendar.setTime(date);

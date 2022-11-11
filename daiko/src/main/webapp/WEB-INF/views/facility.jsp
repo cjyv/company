@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <script>
 	function facilitySchedule(startDay) {
-
+	
 		fetch("facilitySchedule?startDay=" + startDay)
 				.then(function(res) {
 					return res.json();
@@ -16,17 +16,21 @@
 				.then(
 						function(res) {
 							console.log(res[0]);
-							let daystitle = res[0].startDay + " ~ "
-									+ res[0].endDay;
+							
+							let daystitle ="<span id='startDay'>" + res[0].startDay + "</span> ~ <span id='endDay'>"
+									+ res[0].endDay +"</span>";
 							document.getElementById('daystitle').innerHTML = daystitle;
 							for (var i = 0; i < 7; i++) {
-
+							document.getElementsByClassName('days')[i].style.backgroundColor="white";
+								document.getElementById('days' + i).innerHTML="";
 								document.getElementById('days' + i).innerHTML = res[0].days[i];
 								if (res[0].days[i].includes("土")
 										|| res[0].days[i].includes("日")) {
 									document.getElementById('days' + i).parentNode.style.backgroundColor = "#F6C2C2";
 								}
 							}
+							
+							
 
 						})
 
@@ -48,7 +52,7 @@
 							style="border: none;">&laquo;</button>
 
 						<h3 class='dateTitle' id="daystitle"></h3>
-						<button type="button" aria-hidden="true" style="border: none;">&raquo;</button>
+						<button type="button" onclick="next()" aria-hidden="true" style="border: none;">&raquo;</button>
 					</div>
 					<form>
 						<table border="1" class="table table-bordered" id="dataTable"
@@ -70,49 +74,49 @@
 							</thead>
 							<tbody id="tbody">
 								<tr>
-									<td rowspan="1" nowrap="nowrap"><span id="days0"></span><a
+									<td rowspan="1" nowrap="nowrap" class="days"><span id="days0"></span><a
 										href="#"> <img alt="登録"
 											src="https://www.la-comic-illust.top/wp-content/uploads/2021/03/pencil.png"
 											style="width: 15px; margin-left: 5px"></a></td>
 									<td colspan="112"></td>
 								</tr>
 								<tr>
-									<td rowspan="1" nowrap="nowrap"><span id="days1"></span><a
+									<td rowspan="1" nowrap="nowrap" class="days"><span  id="days1"></span><a
 										href="#"> <img alt="登録"
 											src="https://www.la-comic-illust.top/wp-content/uploads/2021/03/pencil.png"
 											style="width: 15px; margin-left: 5px"></a></td>
 									<td colspan="112"></td>
 								</tr>
 								<tr>
-									<td rowspan="1" nowrap="nowrap"><span id="days2"></span><a
+									<td rowspan="1" nowrap="nowrap" class="days"><span  id="days2"></span><a
 										href="#"> <img alt="登録"
 											src="https://www.la-comic-illust.top/wp-content/uploads/2021/03/pencil.png"
 											style="width: 15px; margin-left: 5px"></a></td>
 									<td colspan="112"></td>
 								</tr>
 								<tr>
-									<td rowspan="1" nowrap="nowrap"><span id="days3"></span><a
+									<td rowspan="1" nowrap="nowrap" class="days"><span  id="days3"></span><a
 										href="#"> <img alt="登録"
 											src="https://www.la-comic-illust.top/wp-content/uploads/2021/03/pencil.png"
 											style="width: 15px; margin-left: 5px"></a></td>
 									<td colspan="112"></td>
 								</tr>
 								<tr>
-									<td rowspan="1" nowrap="nowrap"><span id="days4"></span><a
+									<td rowspan="1" nowrap="nowrap" class="days"><span  id="days4"></span><a
 										href="#"> <img alt="登録"
 											src="https://www.la-comic-illust.top/wp-content/uploads/2021/03/pencil.png"
 											style="width: 15px; margin-left: 5px"></a></td>
 									<td colspan="112"></td>
 								</tr>
 								<tr>
-									<td rowspan="1" nowrap="nowrap"><span id="days5"></span><a
+									<td rowspan="1" nowrap="nowrap" class="days"><span  id="days5"></span><a
 										href="#"> <img alt="登録"
 											src="https://www.la-comic-illust.top/wp-content/uploads/2021/03/pencil.png"
 											style="width: 15px; margin-left: 5px"></a></td>
 									<td colspan="112"></td>
 								</tr>
 								<tr>
-									<td rowspan="1" nowrap="nowrap"><span id="days6"></span><a
+									<td rowspan="1" nowrap="nowrap" class="days"><span id="days6"></span><a
 										href="#"> <img alt="登録"
 											src="https://www.la-comic-illust.top/wp-content/uploads/2021/03/pencil.png"
 											style="width: 15px; margin-left: 5px"></a></td>
@@ -142,8 +146,23 @@
 	</div>
 	<script type="text/javascript">
 		function prev() {
+			let day = document.getElementById("startDay").innerHTML;
+			let startDay = new Date(day);
+		
+			startDay.setDate(startDay.getDate()-1);
+			let dateFormat = startDay.getFullYear()+"-"+(startDay.getMonth()+1)+"-"+startDay.getDate();
+			facilitySchedule(dateFormat);
+			
 
-			facilitySchedule();
+		}
+		function next() {
+			let day = document.getElementById("startDay").innerHTML;
+			let startDay = new Date(day);
+		
+			startDay.setDate(startDay.getDate()+1);
+			let dateFormat = startDay.getFullYear()+"-"+(startDay.getMonth()+1)+"-"+startDay.getDate();
+			facilitySchedule(dateFormat);
+		
 
 		}
 	</script>
