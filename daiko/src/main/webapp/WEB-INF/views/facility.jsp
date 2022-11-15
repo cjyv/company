@@ -7,15 +7,19 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <script>
-	function facilitySchedule(startDay) {
-	
-		fetch("facilitySchedule?startDay=" + startDay)
+	function facilitySchedule(startDay,facilityNo) {
+		for (var t = 0; t <=6; t++) {
+			
+		document.getElementsByClassName('test')[t].innerHTML="";
+		}
+		
+		fetch("facilitySchedule?startDay=" + startDay+"&facilityNo="+facilityNo)
 				.then(function(res) {
 					return res.json();
 				})
 				.then(
 						function(res) {
-							console.log(res[0]);
+						console.log(res);
 							
 							let daystitle ="<span id='startDay'>" + res[0].startDay + "</span> ~ <span id='endDay'>"
 									+ res[0].endDay +"</span>";
@@ -23,14 +27,43 @@
 							for (var i = 0; i < 7; i++) {
 							document.getElementsByClassName('days')[i].style.backgroundColor="white";
 								document.getElementById('days' + i).innerHTML="";
+								
 								document.getElementById('days' + i).innerHTML = res[0].days[i];
 								if (res[0].days[i].includes("土")
 										|| res[0].days[i].includes("日")) {
 									document.getElementById('days' + i).parentNode.style.backgroundColor = "#F6C2C2";
 								}
 							}
+						if(res.length>=2){
+							for (var j = 0; j< res.length; j++) {
+								const date = new Date(res[j+1].runingTime);
+								var arrDayStr = ['日','月','火','水','木','金','土']
+								let dateFormat = date.getFullYear()+"/"+(date.getMonth()+1)+"/"+date.getDate()+"("+arrDayStr[date.getDay()]+")";
+								let dateTime = date.getHours();
+								let endingTime = res[j+1].endingTime.split(':',1);
 							
-							
+							for (var y = 0; y <= 6; y++) {
+								const compare = "2022/"+document.getElementById('days' +y).innerHTML;
+											
+								
+								if(dateFormat==compare){
+								
+									
+								
+								for (var h = 9; h <=18; h++) {
+									for (var m = 9; m <= 18; m++) {
+										if (dateTime==h && endingTime[0]==m) {
+											console.log(dateTime+"~"+endingTime[0]);
+											
+									document.getElementById("test"+y).innerHTML+=" "+dateTime+" ~ "+endingTime+""+res[j+1].catalog;
+										}
+										
+									}
+								}
+							}
+							}
+						}
+						}
 
 						})
 
@@ -38,7 +71,7 @@
 </script>
 
 </head>
-<body onload="facilitySchedule(null)">
+<body onload="facilitySchedule(null,${facilityNo})">
 	<div id="content">
 		<!-- Begin Page Content -->
 		<div class="container-fluid">
@@ -78,49 +111,49 @@
 										href="#"> <img alt="登録"
 											src="https://www.la-comic-illust.top/wp-content/uploads/2021/03/pencil.png"
 											style="width: 15px; margin-left: 5px"></a></td>
-									<td colspan="112"></td>
+									<td  class="test" id="test0" colspan="112"></td>
 								</tr>
-								<tr>
+								<tr >
 									<td rowspan="1" nowrap="nowrap" class="days"><span  id="days1"></span><a
 										href="#"> <img alt="登録"
 											src="https://www.la-comic-illust.top/wp-content/uploads/2021/03/pencil.png"
 											style="width: 15px; margin-left: 5px"></a></td>
-									<td colspan="112"></td>
+									<td class="test" id="test1" colspan="112"></td>
 								</tr>
 								<tr>
 									<td rowspan="1" nowrap="nowrap" class="days"><span  id="days2"></span><a
 										href="#"> <img alt="登録"
 											src="https://www.la-comic-illust.top/wp-content/uploads/2021/03/pencil.png"
 											style="width: 15px; margin-left: 5px"></a></td>
-									<td colspan="112"></td>
+									<td class="test" id="test2"  colspan="112"></td>
 								</tr>
 								<tr>
 									<td rowspan="1" nowrap="nowrap" class="days"><span  id="days3"></span><a
 										href="#"> <img alt="登録"
 											src="https://www.la-comic-illust.top/wp-content/uploads/2021/03/pencil.png"
 											style="width: 15px; margin-left: 5px"></a></td>
-									<td colspan="112"></td>
+									<td class="test" id="test3" colspan="112"></td>
 								</tr>
 								<tr>
 									<td rowspan="1" nowrap="nowrap" class="days"><span  id="days4"></span><a
 										href="#"> <img alt="登録"
 											src="https://www.la-comic-illust.top/wp-content/uploads/2021/03/pencil.png"
 											style="width: 15px; margin-left: 5px"></a></td>
-									<td colspan="112"></td>
+									<td class="test" id="test4" colspan="112"></td>
 								</tr>
 								<tr>
 									<td rowspan="1" nowrap="nowrap" class="days"><span  id="days5"></span><a
 										href="#"> <img alt="登録"
 											src="https://www.la-comic-illust.top/wp-content/uploads/2021/03/pencil.png"
 											style="width: 15px; margin-left: 5px"></a></td>
-									<td colspan="112"></td>
+									<td class="test" id="test5" colspan="112"></td>
 								</tr>
 								<tr>
 									<td rowspan="1" nowrap="nowrap" class="days"><span id="days6"></span><a
 										href="#"> <img alt="登録"
 											src="https://www.la-comic-illust.top/wp-content/uploads/2021/03/pencil.png"
 											style="width: 15px; margin-left: 5px"></a></td>
-									<td colspan="112"></td>
+									<td class="test" id="test6" colspan="112"></td>
 								</tr>
 							</tbody>
 							<tfoot>
@@ -151,7 +184,7 @@
 		
 			startDay.setDate(startDay.getDate()-1);
 			let dateFormat = startDay.getFullYear()+"-"+(startDay.getMonth()+1)+"-"+startDay.getDate();
-			facilitySchedule(dateFormat);
+			facilitySchedule(dateFormat,${facilityNo});
 			
 
 		}
@@ -161,7 +194,7 @@
 		
 			startDay.setDate(startDay.getDate()+1);
 			let dateFormat = startDay.getFullYear()+"-"+(startDay.getMonth()+1)+"-"+startDay.getDate();
-			facilitySchedule(dateFormat);
+			facilitySchedule(dateFormat,${facilityNo});
 		
 
 		}

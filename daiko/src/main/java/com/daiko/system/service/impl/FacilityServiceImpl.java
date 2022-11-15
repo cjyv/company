@@ -67,14 +67,13 @@ public class FacilityServiceImpl implements FacilityService{
 		daysMap.put("days", days);
 		map.put("e_number", session.getAttribute("e_number"));
 		
-		
+
 		
 	
 		
 		List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();
 		list =fdao.facilitySchedule(map);
 		list.add(0,daysMap);
-		
 		
 		return list;
 		
