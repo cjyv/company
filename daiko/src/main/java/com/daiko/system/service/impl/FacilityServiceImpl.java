@@ -62,7 +62,7 @@ public class FacilityServiceImpl implements FacilityService{
 			calendar.add(Calendar.DATE, -i);
 			}
 		}
-		map.put("endDay", sdf.format(calendar.getTime()));
+		map.put("endDay", sdf.format(calendar.getTime())+" 23:59");
 		daysMap.put("endDay",  sdf.format(calendar.getTime()));
 		daysMap.put("days", days);
 		map.put("e_number", session.getAttribute("e_number"));

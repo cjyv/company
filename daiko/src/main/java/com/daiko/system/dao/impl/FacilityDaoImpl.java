@@ -18,7 +18,7 @@ public class FacilityDaoImpl implements FacilityDAO{
 	
 	@Override
 	public List<Map<String, Object>> facilitySchedule(Map<String, Object> map) {
-		
+	
 		return ss.selectList("facility.list", map);
 	}
 }

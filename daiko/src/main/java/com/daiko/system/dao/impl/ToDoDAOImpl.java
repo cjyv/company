@@ -44,4 +44,11 @@ public List<String> todoFileDelete(List<Integer> list) {
 	// TODO Auto-generated method stub
 	return ss.selectList("todo.fileDelete",list);
 }
+
+@Override
+public int todoUpdate(Map<String, Object> map) {
+	// TODO Auto-generated method stub
+	return ss.update("todo.update", map);
+}
+
 }

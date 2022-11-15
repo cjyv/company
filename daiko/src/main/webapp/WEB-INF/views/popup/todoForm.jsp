@@ -30,6 +30,10 @@
 						<form id="fmt" name="fmt" 
 							style="width: 500px; height: 500px">
 							<div class="mb-3">
+							<input type="hidden" name="seq" value="${detail.seq }">
+							<c:if test="${detail.referenceFile != null}">
+							<input type="hidden" name="oldFile" value="${detail.referenceFile }">
+							</c:if>
 								<label for="exampleFormControlInput1" class="form-label">タイトル</label>
 								<input type="text" class="form-control" id="title" name="title"
 									value="${detail.title }">
@@ -82,7 +86,7 @@
 								<c:choose>
 									<c:when test="${detail !=null }">
 										<button style="width: 60%; height: 60px; font-size: 35px"
-											class="btn btn-success  btn-icon-split" type="button">編集</button>
+											class="btn btn-success  btn-icon-split" type="button" onclick="update()">編集</button>
 									</c:when>
 									<c:when test="${detail ==null }">
 										<button style="width: 60%; height: 60px; font-size: 35px"
@@ -161,6 +165,68 @@
 					e.preventdefault();
 				}
 			}
+		</script>
+		<script type="text/javascript">
+		function update(e) {
+			var form = document.fmt
+			form.action="todoUpdate";
+			form.target="_self";
+			form.method="post";
+				form.enctype="multipart/form-data";
+			var confirm = window.confirm("この内容で修正しますか？");
+			/*	
+				var title = document.getElementById("title").value;
+				var content = document.getElementById("content").value;
+				var T_dateTime = document.getElementById("T_dateTime").value;
+				var T_endTime = document.getElementById("T_endTime").value;
+				var state = document.getElementById("state").value;
+			 */
+			var title = fmt.title.value;
+			var content = fmt.content.value;
+			var T_dateTime = fmt.T_dateTime.value;
+			var T_endTime = fmt.T_endTime.value;
+			var state = fmt.state.value;
+
+			if (confirm) {
+				if (title == null || title == "") {
+					alert("タイトルを記入してください。");
+					fmt.title.focus();
+					e.preventdefault();
+				} else if (content == null || content == "") {
+					alert("内容を記入してください。");
+					fmt.content.focus();
+					e.preventdefault();
+				} else if (T_dateTime == null || T_dateTime == "") {
+					alert("開始日を記入してください。");
+					fmt.T_dateTime.focus();
+					e.preventdefault();
+				} else if (T_endTime == null || T_endTime == "") {
+					alert("終了予定日を記入してください。");
+					fmt.T_endTime.focus();
+					e.preventdefault();
+				}else if (T_dateTime > T_endTime) {
+					alert("終了予定日は開始日の前日は登録出来ません。");
+					fmt.T_endTime.focus();
+					e.preventdefault();
+				} 
+
+				else if (state == null || state == "") {
+					alert("状況を記入してください。");
+					fmt.state.focus();
+					e.preventdefault();
+				} else {
+					document.fmt.submit();
+				
+					
+				
+				}
+
+			} else {
+				e.preventdefault();
+			}
+		}
+		
+		
 		</script>
 </body>
 </html>

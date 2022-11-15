@@ -7,7 +7,7 @@
 select seq,facilityNo,
 date_format(runingTime,'%Y-%m-%d %H:%i') as runingTime,e_number,reference,catalog,endingTime 
 from facility where facilityNo=#{facilityNo} and runingTime  between #{startDay} and #{endDay}
-
+order by runingTime
 
 
 </select>

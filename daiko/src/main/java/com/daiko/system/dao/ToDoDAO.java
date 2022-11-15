@@ -16,4 +16,6 @@ public interface ToDoDAO {
 	public int todoDelete(List<Integer> list);
 	
 	public List<String> todoFileDelete(List<Integer> list);
+	
+	public int todoUpdate(Map<String, Object>map);
 }

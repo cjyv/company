@@ -65,12 +65,12 @@ public class ToDoController {
 	@RequestMapping(value = "todoInsert", method = RequestMethod.POST)
 	public void todoInsert(@RequestParam Map<String,Object>map,MultipartFile referenceFile,HttpSession session,HttpServletResponse response) throws IllegalStateException, IOException {
 	
-		UUID ui = UUID.randomUUID();
-		String fileName = ui+"_"+referenceFile.getOriginalFilename();
-		File file = new File(uploadPath+fileName);
 		
 	if (referenceFile.getSize()>0) {
 		
+		UUID ui = UUID.randomUUID();
+		String fileName = ui+"_"+referenceFile.getOriginalFilename();
+		File file = new File(uploadPath+fileName);
 		referenceFile.transferTo(file);
 		map.put("referenceFile", fileName);
 		map.put("realFileName", referenceFile.getOriginalFilename());
@@ -100,7 +100,40 @@ public class ToDoController {
 	
 		return ToDo(model, session);
 	}
+	@ResponseBody
+	@RequestMapping(value = "todoUpdate", method = RequestMethod.POST)
+	public void todoUpdate(@RequestParam Map<String,Object>map,MultipartFile referenceFile,HttpSession session,HttpServletResponse response) throws IllegalStateException, IOException {
+	
+		if (map.get("oldFile")!=null) {
+			
+			String oldProfile= String.valueOf(map.get("oldProfile"));
+			File oldFile = new File(uploadPath+oldProfile);
+			oldFile.delete();
+		}
+		
+	if (referenceFile.getSize()>0) {
+		UUID ui = UUID.randomUUID();
+		String fileName = ui+"_"+referenceFile.getOriginalFilename();
+		File file = new File(uploadPath+fileName);
+		referenceFile.transferTo(file);
+		map.put("referenceFile", fileName);
+		map.put("realFileName", referenceFile.getOriginalFilename());
+	}
 
+		todoservice.todoUpdate(map, session);
+		 StringBuffer sb1 = new StringBuffer();
+		 sb1.append("<script type='text/javascript'>");
+		 sb1.append("alert('編集成功しました。');");
+		 sb1.append("opener.location.reload();");
+		 sb1.append("window.close();");
+		 sb1.append("</script>");
+
+		 response.setContentType("text/html; charset=UTF-8");
+		 PrintWriter out1 = response.getWriter();
+		 out1.println(sb1);
+		 out1.flush();
+		
+	}
 
 	
 }

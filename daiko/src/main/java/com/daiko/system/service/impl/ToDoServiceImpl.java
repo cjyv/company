@@ -67,5 +67,11 @@ public class ToDoServiceImpl implements ToDoService {
 		
 		}
 	}
+	@Override
+	public int todoUpdate(Map<String, Object> map, HttpSession session) {
+		
+		return tdo.todoUpdate(map);
+	}
+	
 	
 }

@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <script>
 	function facilitySchedule(startDay,facilityNo) {
-		for (var t = 0; t <=6; t++) {
+		for (var t = 0; t <7; t++) {
 			
 		document.getElementsByClassName('test')[t].innerHTML="";
 		}
