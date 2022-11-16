@@ -35,4 +35,16 @@ public class NoticeServiceImpl implements NoticeService{
 		return ndao.noticeInsert(map);
 	}
 	
+	@Override
+	public int delete(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return ndao.noticeDelete(map);
+	}
+	
+	@Override
+	public int update(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return ndao.noticeUpdate(map);
+	}
+	
 }

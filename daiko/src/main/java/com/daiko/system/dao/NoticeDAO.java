@@ -11,4 +11,8 @@ public interface NoticeDAO {
 	public Map<String,Object> noticeDetail(int noticeNumber);
 	
 	public int noticeInsert(Map<String, Object> map);
+	
+	public int noticeDelete(Map<String, Object>map);
+	
+	public int noticeUpdate(Map<String, Object>map);
 }

@@ -11,4 +11,8 @@ public interface NoticeService {
 	
 	public int insert(Map<String, Object> map);
 	
+	public int delete(Map<String, Object>map);
+	
+	public int update(Map<String, Object>map);
+	
 }

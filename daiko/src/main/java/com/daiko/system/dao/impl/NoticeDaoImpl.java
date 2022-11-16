@@ -33,4 +33,16 @@ public class NoticeDaoImpl implements NoticeDAO{
 		// TODO Auto-generated method stub
 		return ss.insert("notice.Insert", map);
 	}
+	
+	@Override
+	public int noticeDelete(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return ss.delete("notice.Delete", map);
+	}
+	
+	@Override
+	public int noticeUpdate(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return ss.update("notice.Update",map);
+	}
 }

@@ -24,23 +24,36 @@
 					<div class="table-responsive">
 						<form action="noticeInsert.do" method="post" name="fmt" id="fmt" enctype="multipart/form-data"  onsubmit="return check()">
 							<div class="mb-3">
+							<c:if test="${detail.seq != null }">
+							<input type="hidden" name="seq" value="${detail.seq }">
+							</c:if>
 								<label for="exampleFormControlInput1" class="form-label">タイトル</label>
 								<input type="text" class="form-control"
-									id="exampleFormControlInput1" name="title">
+									id="exampleFormControlInput1" name="title" value="${detail.title}">
 							</div>
 							<div class="mb-3">
 								<label for="exampleFormControlTextarea1" class="form-label">内容</label>
 								<textarea class="form-control" id="exampleFormControlTextarea1"
-									rows="12" name="content"></textarea>
+									rows="12" name="content">${detail.content}</textarea>
 							</div>
 							<div>
 								<label for="formFileLg" class="form-label">ファイル</label> <input
 									class="form-control form-control-lg" id="formFileLg"
 									type="file" name="file">
+									<c:if test="${detail.file != null}">
+									<input name="oldFile" type="hidden" value="${detail.file}">
+									</c:if>
 							</div>
 							<hr>
 							      <div style="text-align: center">
-					<button style="width:60%;height: 60px;font-size: 35px" class="btn btn-primary  btn-icon-split" type="submit">追加</button>
+							      <c:choose>
+							      <c:when test="${detail==null }">
+					<button style="width:60%;height: 60px;font-size: 35px" class="btn btn-primary  btn-icon-split" type="submit">追加</button>							      
+							      </c:when>
+							      <c:when test="${detail!=null }">							      
+					<button style="width:60%;height: 60px;font-size: 35px" class="btn btn-success  btn-icon-split" type="button" onclick="update()">編集</button>							      
+							      </c:when>
+							      </c:choose>
 					</div>
 						</form>
 					</div>
@@ -62,6 +75,7 @@
 				var T_endTime = document.getElementById("T_endTime").value;
 				var state = document.getElementById("state").value;
 			 */
+			
 			var title = fmt.title.value;
 			var content = fmt.content.value;
 			
@@ -86,6 +100,36 @@
 			}
 		}
 		
+		</script>
+		<script type="text/javascript">
+		function update(e) {
+			
+				var fmt = document.fmt;
+			var title = fmt.title.value;
+			var content = fmt.content.value;
+			const confirm = window.confirm("この内容で編集しますか？");
+			if(confirm){
+				
+				if (title == null || title == "") {
+					alert("タイトルを記入してください。");
+					fmt.title.focus();
+					e.preventdefault();
+				} else if (content == null || content == "") {
+					alert("内容を記入してください。");
+					fmt.content.focus();
+					e.preventdefault();
+					
+				} else{
+				
+				
+				
+				fmt.action="noticeUpdate.do";
+				fmt.method="post";
+				fmt.enctype="multipart/form-data";
+				fmt.submit();
+				}
+			}
+		}
 		</script>
 </body>
 </html>

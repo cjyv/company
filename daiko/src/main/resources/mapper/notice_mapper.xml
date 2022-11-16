@@ -4,7 +4,7 @@
 
 
 <select id="noticeList" resultType="map">
-select * from notice
+select * from notice order by seq desc;
 </select>
 
 <select id="Detail" resultType="map" parameterType="int">
@@ -14,5 +14,16 @@ select * from notice where seq = #{noticeNumber}
 <insert id="Insert" parameterType="map">
 insert into notice(e_number,name,title,content,n_date,file,realFileName) values(#{e_number},#{name},#{title},#{content},now(),#{file},#{realFileName})
 </insert>
+
+<delete id="Delete" parameterType="map">
+delete from notice where seq = #{seq} 
+</delete>
+
+<update id="Update">
+update notice set title=#{title},content=#{content},n_date=now(),
+<if test="file!=null">file=#{file},realFileName=#{realFileName}</if>
+<if test="file==null">file=null,realFileName=null</if>
+where seq=#{seq}
+</update>
 
 </mapper>

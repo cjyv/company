@@ -44,7 +44,7 @@
                                 </table>
                             </div>
                             <div style="text-align: right">
-					<button style="width: 80px" class="btn btn-primary  btn-icon-split" onclick="location.href='noticeInsert'">追加</button>
+					<button style="width: 80px" class="btn btn-primary  btn-icon-split" onclick="location.href='noticeInsert?seq=0'">追加</button>
 					</div>
                         </div>
                     </div>

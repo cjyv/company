@@ -48,19 +48,26 @@ public class NoticeController {
 	}
 	//お知らせ項目ディテール
 	@RequestMapping(value = "noticeDetail",method = RequestMethod.GET)
-	public String noticeDetail(@RequestParam int noticeNumber ,Model model) {
+	public String noticeDetail(@RequestParam int noticeNumber ,Model model,HttpSession session) {
 		Map<String, Object> detail = noticeService.detail(noticeNumber);
 
 		
 		model.addAttribute("contentPage", "noticeDetail.jsp");
 		model.addAttribute("detail", detail);
+		model.addAttribute("e_number", session.getAttribute("e_number"));
 		
 		return "index";
 	}
 	//お知らせ追加移動
 	@RequestMapping(value = "noticeInsert",method = RequestMethod.GET)
-	public String noticeInsert(Model model) {
+	public String noticeInsert(@RequestParam int seq, Model model) {
+	Map<String, Object> detail = noticeService.detail(seq);
+
 		
+		
+		
+		
+		model.addAttribute("detail", detail);
 		model.addAttribute("contentPage", "noticeWrite.jsp");
 		
 		return "index";
@@ -137,6 +144,56 @@ public class NoticeController {
 		}
 
 	}
+	
+	@RequestMapping(value = "noticeDelete", method = RequestMethod.POST)
+	public String noticeDelete(@RequestParam Map<String,Object> map,Model model,HttpSession session) {
+		if(map.get("oldFile")!=null) {
+			String oldFile = String.valueOf(map.get("oldFile"));
+			File file= new File(uploadPath+oldFile);
+			file.delete();
+		}
+		
+		noticeService.delete(map);
+		
+		return notice(session, model);
+		
+	}
+	@RequestMapping(value = "noticeUpdate.do",method = RequestMethod.POST)
+	public String noticeUpdate_Do(@RequestParam Map<String, Object> map, MultipartFile file, Model model,HttpSession session ) throws IllegalStateException, IOException {
+		
+		
+		if(map.get("oldFile")!=null) {
+			String oldFile = String.valueOf(map.get("oldFile"));
+			File file2= new File(uploadPath+oldFile);
+			file2.delete();
+		}
+		
+		
+		UUID ui = UUID.randomUUID();
+		
+	if(file.getSize()>0) {	
+		String realFileName = file.getOriginalFilename();
+		String File = ui+"_"+realFileName;
+		File saveFile = new File(uploadPath+File);
+		
+		file.transferTo(saveFile);
+
+		
+		map.put("file",File);
+		map.put("realFileName",realFileName);
+		
+	}
+	
+		
+		
+		
+		noticeService.update(map);
+		
+		
+		return notice(session, model);
+	}
+	
+	
 		
 	}
 	
