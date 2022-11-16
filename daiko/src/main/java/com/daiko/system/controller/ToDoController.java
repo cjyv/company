@@ -104,12 +104,7 @@ public class ToDoController {
 	@RequestMapping(value = "todoUpdate", method = RequestMethod.POST)
 	public void todoUpdate(@RequestParam Map<String,Object>map,MultipartFile referenceFile,HttpSession session,HttpServletResponse response) throws IllegalStateException, IOException {
 	
-		if (map.get("oldFile")!=null) {
-			
-			String oldProfile= String.valueOf(map.get("oldProfile"));
-			File oldFile = new File(uploadPath+oldProfile);
-			oldFile.delete();
-		}
+	
 		
 	if (referenceFile.getSize()>0) {
 		UUID ui = UUID.randomUUID();
@@ -118,6 +113,13 @@ public class ToDoController {
 		referenceFile.transferTo(file);
 		map.put("referenceFile", fileName);
 		map.put("realFileName", referenceFile.getOriginalFilename());
+	if (map.get("oldFile")!=null) {
+			
+			String oldProfile= String.valueOf(map.get("oldProfile"));
+			File oldFile = new File(uploadPath+oldProfile);
+			oldFile.delete();
+		}
+		
 	}
 
 		todoservice.todoUpdate(map, session);

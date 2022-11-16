@@ -55,7 +55,7 @@
 										if (dateTime==h && endingTime[0]==m) {
 											console.log(dateTime+"~"+endingTime[0]);
 											
-									document.getElementById("test"+y).innerHTML+=" "+dateTime+" ~ "+endingTime+""+res[j+1].catalog;
+									document.getElementById("test"+y).innerHTML+="<table style='text-align: center;float: left;height: max'><tr><td>"+dateTime+" ~ "+endingTime+"<br>"+res[j+1].catalog+"</td></tr></table>";
 										}
 										
 									}
@@ -89,7 +89,7 @@
 					</div>
 					<form>
 						<table border="1" class="table table-bordered" id="dataTable"
-							width="100%" cellspacing="0">
+							width="100%" cellspacing="0" >
 							<thead>
 								<tr class="timeFont">
 									<td>&nbsp;</td>

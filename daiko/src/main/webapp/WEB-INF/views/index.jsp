@@ -151,12 +151,26 @@
             </li>
 
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
+             <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages2"
+                    aria-expanded="true" aria-controls="collapsePages2">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>ワークフロー</span>
+                </a>
+                <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">申請業務</h6>
+                        <a class="collapse-item" href="work?type=1">新規申請</a>
+                        <a class="collapse-item" href="work?type=2">保存一覧</a>
+                        <a class="collapse-item" href="work?type=3">承認待ち一覧</a>
+                        <a class="collapse-item" href="work?type=4">結果確認済み一覧</a>
+                        <div class="collapse-divider"></div>
+                        <h6 class="collapse-header">決裁業務</h6>
+                        <a class="collapse-item" href="work?type=5">未処理一覧</a>
+                        <a class="collapse-item" href="work?type=6">処理済み一覧</a>
+                    </div>
+                </div>
             </li>
-
             <!-- Nav Item - Tables -->
             <li class="nav-item">
                 <a class="nav-link" href="notice">

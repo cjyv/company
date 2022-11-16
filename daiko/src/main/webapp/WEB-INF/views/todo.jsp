@@ -63,7 +63,7 @@ fetch("todoList?searchType="+searchType+"&searchTxt="+searchTxt)
 					</div>
 					<div class="table-responsive">
 					<form name="tfm">
-						<table class="table table-hover" width="100%" cellspacing="0"
+						<table class="table table-hover"　width="100%" cellspacing="0" 
 							style="text-align: center">
 							<thead>
 								<tr>
