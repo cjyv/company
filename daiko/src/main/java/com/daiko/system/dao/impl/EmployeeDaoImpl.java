@@ -1,5 +1,6 @@
 package com.daiko.system.dao.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -29,6 +30,12 @@ public Map<String, Object> profile(int e_number) {
 @Override
 public int profileUpdate(Map<String, Object> map) {
 	return ss.update("employee.profileUpdate", map);
+}
+
+@Override
+public List<Map<String, Object>> employeeList() {
+
+	return ss.selectList("employee.employeelist");
 }
 	
 }

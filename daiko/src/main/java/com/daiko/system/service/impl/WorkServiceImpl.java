@@ -21,7 +21,7 @@ public class WorkServiceImpl implements workService {
 	@Override
 	public List<Map<String, Object>> list(Map<String, Object> map, HttpSession session) {
 		map.put("e_number", session.getAttribute("e_number"));
-		map.put("name", session.getAttribute("name"));
+	
 		return wdao.list(map);
 	}
 }

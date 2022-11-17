@@ -55,7 +55,7 @@
 										if (dateTime==h && endingTime[0]==m) {
 											console.log(dateTime+"~"+endingTime[0]);
 											
-									document.getElementById("test"+y).innerHTML+="<table style='text-align: center;float: left;height: max'><tr><td>"+dateTime+" ~ "+endingTime+"<br>"+res[j+1].catalog+"</td></tr></table>";
+									document.getElementById("test"+y).innerHTML+="<div style='float:left;text-align:center;margin-left:5px;'>"+dateTime+" ~ "+endingTime+"<br>"+res[j+1].catalog+"</div>";
 										}
 										
 									}

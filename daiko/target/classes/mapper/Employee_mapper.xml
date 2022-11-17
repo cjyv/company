@@ -16,4 +16,8 @@ update employee set name = #{name},e_address =#{e_address},e_phone=#{e_phone}
 where e_number = #{e_number}
 </update>
 
+<select id="employeelist" resultType="map">
+select e_number,name from employee
+</select>
+
 </mapper>

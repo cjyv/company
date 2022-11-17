@@ -1,5 +1,6 @@
 package com.daiko.system.service.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -54,6 +55,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public int profileUpdate(Map<String, Object>map) {
 		return employedao.profileUpdate(map);
+	}
+	
+	@Override
+	public List<Map<String, Object>> employeeList() {
+		
+		return employedao.employeeList();
 	}
 	
 	

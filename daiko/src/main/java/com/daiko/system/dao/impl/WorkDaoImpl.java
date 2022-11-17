@@ -19,6 +19,6 @@ public class WorkDaoImpl implements WorkDAO{
 	@Override
 	public List<Map<String, Object>> list(Map<String, Object> map) {
 		// TODO Auto-generated method stub
-		return ss.selectList("list", map);
+		return ss.selectList("work.list", map);
 	}
 }

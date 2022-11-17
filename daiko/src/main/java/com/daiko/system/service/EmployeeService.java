@@ -1,5 +1,6 @@
 package com.daiko.system.service;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -12,4 +13,5 @@ public String loginCheck(EmployeeDTO dto, HttpSession session);
 public void logOut(HttpSession session);
 public Map<String, Object> profile(HttpSession session);
 public int profileUpdate(Map<String, Object>map);	
+public List<Map<String, Object>> employeeList();
 }
