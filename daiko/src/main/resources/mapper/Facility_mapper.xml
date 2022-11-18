@@ -12,6 +12,22 @@ order by runingTime
 
 </select>
 
+<insert id="insert" parameterType="map">
+insert into facility(facilityNo,runingTime,e_number,reference,catalog,endingTime) values(#{facilityNo},#{runingTime},#{e_number},#{reference},#{catalog},#{endingTime})
+</insert>
 
+<select id="Detail" parameterType="int" resultType="map">
+select seq,facilityNo,
+date_format(runingTime,'%Y-%m-%d %H:%i') as runingTime,e_number,reference,catalog,endingTime 
+from facility where seq=#{seq}
+</select>
+
+<delete id="delete">
+delete from facility where seq=#{seq};
+</delete>
+
+<update id="update" parameterType="map" >
+update facility set runingTime=#{runingTime},reference=#{reference},catalog=#{catalog},endingTime=#{endingTime} where seq =#{seq}
+</update>
 
 </mapper>

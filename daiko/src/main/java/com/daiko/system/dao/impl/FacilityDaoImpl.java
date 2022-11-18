@@ -21,4 +21,27 @@ public class FacilityDaoImpl implements FacilityDAO{
 	
 		return ss.selectList("facility.list", map);
 	}
+	
+	@Override
+	public int facilityInsert(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return ss.insert("facility.insert",map);
+	}
+	
+	@Override
+	public Map<String, Object> facilityDetail(int seq) {
+		// TODO Auto-generated method stub
+		return ss.selectOne("facility.Detail", seq);
+	}
+	
+	@Override
+	public int facilityDelete(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return ss.delete("facility.delete", map);
+	}
+	@Override
+	public int facilityUpdate(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return ss.update("facility.update", map);
+	}
 }

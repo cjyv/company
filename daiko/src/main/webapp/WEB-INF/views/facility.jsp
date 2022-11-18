@@ -6,6 +6,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+
 <script>
 	function facilitySchedule(startDay,facilityNo) {
 		for (var t = 0; t <7; t++) {
@@ -19,15 +20,19 @@
 				})
 				.then(
 						function(res) {
-						console.log(res);
+						
 							
 							let daystitle ="<span id='startDay'>" + res[0].startDay + "</span> ~ <span id='endDay'>"
 									+ res[0].endDay +"</span>";
 							document.getElementById('daystitle').innerHTML = daystitle;
+		
+						
 							for (var i = 0; i < 7; i++) {
 							document.getElementsByClassName('days')[i].style.backgroundColor="white";
 								document.getElementById('days' + i).innerHTML="";
-								
+						
+				
+									
 								document.getElementById('days' + i).innerHTML = res[0].days[i];
 								if (res[0].days[i].includes("土")
 										|| res[0].days[i].includes("日")) {
@@ -53,9 +58,9 @@
 								for (var h = 9; h <=18; h++) {
 									for (var m = 9; m <= 18; m++) {
 										if (dateTime==h && endingTime[0]==m) {
-											console.log(dateTime+"~"+endingTime[0]);
 											
-									document.getElementById("test"+y).innerHTML+="<div style='float:left;text-align:center;margin-left:5px;'>"+dateTime+" ~ "+endingTime+"<br>"+res[j+1].catalog+"</div>";
+											
+									document.getElementById("test"+y).innerHTML+="<div style='float:left;text-align:center;margin-left:5px;' onclick='detail("+res[j+1].seq+")'>"+dateTime+" ~ "+endingTime+"<br>"+res[j+1].catalog+"</div>";
 										}
 										
 									}
@@ -107,52 +112,31 @@
 							</thead>
 							<tbody id="tbody">
 								<tr>
-									<td rowspan="1" nowrap="nowrap" class="days"><span id="days0"></span><a
-										href="#"> <img alt="登録"
-											src="https://www.la-comic-illust.top/wp-content/uploads/2021/03/pencil.png"
-											style="width: 15px; margin-left: 5px"></a></td>
+									<td rowspan="1" nowrap="nowrap" class="days"><span id="days0"></span><a href='javascript:facilityForm(${facilityNo },0)'id="0"> <img alt='登録'src='https://www.la-comic-illust.top/wp-content/uploads/2021/03/pencil.png'style="width: 15px; margin-left: 5px"></a></td>
 									<td  class="test" id="test0" colspan="112"></td>
 								</tr>
 								<tr >
-									<td rowspan="1" nowrap="nowrap" class="days"><span  id="days1"></span><a
-										href="#"> <img alt="登録"
-											src="https://www.la-comic-illust.top/wp-content/uploads/2021/03/pencil.png"
-											style="width: 15px; margin-left: 5px"></a></td>
+									<td rowspan="1" nowrap="nowrap" class="days"><span  id="days1"></span><a href='javascript:facilityForm(${facilityNo },1)' id="1"> <img alt='登録'src='https://www.la-comic-illust.top/wp-content/uploads/2021/03/pencil.png'style="width: 15px; margin-left: 5px"></a></td>
 									<td class="test" id="test1" colspan="112"></td>
 								</tr>
 								<tr>
-									<td rowspan="1" nowrap="nowrap" class="days"><span  id="days2"></span><a
-										href="#"> <img alt="登録"
-											src="https://www.la-comic-illust.top/wp-content/uploads/2021/03/pencil.png"
-											style="width: 15px; margin-left: 5px"></a></td>
+									<td rowspan="1" nowrap="nowrap" class="days"><span  id="days2"></span><a href='javascript:facilityForm(${facilityNo },2)'id="2" > <img alt='登録'src='https://www.la-comic-illust.top/wp-content/uploads/2021/03/pencil.png'style='width: 15px; margin-left: 5px'></a></td>
 									<td class="test" id="test2"  colspan="112"></td>
 								</tr>
 								<tr>
-									<td rowspan="1" nowrap="nowrap" class="days"><span  id="days3"></span><a
-										href="#"> <img alt="登録"
-											src="https://www.la-comic-illust.top/wp-content/uploads/2021/03/pencil.png"
-											style="width: 15px; margin-left: 5px"></a></td>
+									<td rowspan="1" nowrap="nowrap" class="days"><span  id="days3"></span><a href='javascript:facilityForm(${facilityNo },3)'id="3" > <img alt='登録'src='https://www.la-comic-illust.top/wp-content/uploads/2021/03/pencil.png'style='width: 15px; margin-left: 5px'></a></td>
 									<td class="test" id="test3" colspan="112"></td>
 								</tr>
 								<tr>
-									<td rowspan="1" nowrap="nowrap" class="days"><span  id="days4"></span><a
-										href="#"> <img alt="登録"
-											src="https://www.la-comic-illust.top/wp-content/uploads/2021/03/pencil.png"
-											style="width: 15px; margin-left: 5px"></a></td>
+									<td rowspan="1" nowrap="nowrap" class="days"><span  id="days4"></span><a href='javascript:facilityForm(${facilityNo },4)'id="4" > <img alt='登録'src='https://www.la-comic-illust.top/wp-content/uploads/2021/03/pencil.png'style='width: 15px; margin-left: 5px'></a></td>
 									<td class="test" id="test4" colspan="112"></td>
 								</tr>
 								<tr>
-									<td rowspan="1" nowrap="nowrap" class="days"><span  id="days5"></span><a
-										href="#"> <img alt="登録"
-											src="https://www.la-comic-illust.top/wp-content/uploads/2021/03/pencil.png"
-											style="width: 15px; margin-left: 5px"></a></td>
+									<td rowspan="1" nowrap="nowrap" class="days"><span  id="days5"></span><a href='javascript:facilityForm(${facilityNo },5)'id="5" > <img alt='登録'src='https://www.la-comic-illust.top/wp-content/uploads/2021/03/pencil.png'style='width: 15px; margin-left: 5px'></a></td>
 									<td class="test" id="test5" colspan="112"></td>
 								</tr>
 								<tr>
-									<td rowspan="1" nowrap="nowrap" class="days"><span id="days6"></span><a
-										href="#"> <img alt="登録"
-											src="https://www.la-comic-illust.top/wp-content/uploads/2021/03/pencil.png"
-											style="width: 15px; margin-left: 5px"></a></td>
+									<td rowspan="1" nowrap="nowrap" class="days"><span id="days6"></span><a href='javascript:facilityForm(${facilityNo },6)' id="6"> <img alt='登録'src='https://www.la-comic-illust.top/wp-content/uploads/2021/03/pencil.png'style='width: 15px; margin-left: 5px'></a></td>
 									<td class="test" id="test6" colspan="112"></td>
 								</tr>
 							</tbody>
@@ -198,6 +182,36 @@
 		
 
 		}
+		function facilityForm(facilityNo,number) {
+			
+			var number = document.getElementById(number);
+			var id =number.previousElementSibling.id;
+			var day = "2022/"+document.getElementById(id).innerHTML;
+		
+			 var url = "facilityForm?facilityNo="+facilityNo+"&day="+day;
+		     var name = "facilityForm";
+		     var option = "width = 665, height = 600, top = 200, left = 200";
+		     window.open(url, name, option);
+			
+			window.open(url,name,option);
+		} 	
+		
+
+		
+		
 	</script>
+	<script type="text/javascript">
+	function detail(seq) {
+		var url = "facilityDetail?seq="+seq;
+	     var name = "facilityForm";
+	     var option = "width = 665, height = 600, top = 200, left = 200";
+	     window.open(url, name, option);
+		
+		window.open(url,name,option);
+	}
+	
+	</script>
+	
+
 </body>
 </html>

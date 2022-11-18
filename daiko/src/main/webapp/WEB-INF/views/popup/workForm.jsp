@@ -11,7 +11,7 @@
 <form action="">
 <table id="worktable">
 <tr>
-<td>${title}</td>
+
 </tr>
 </table>
 </form>
