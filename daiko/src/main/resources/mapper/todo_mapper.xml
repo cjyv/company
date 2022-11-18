@@ -54,4 +54,8 @@ where seq=#{seq}
 
 </update>
 
+<select id="progress" parameterType="int" resultType="map">
+select count(seq) from todo where e_number=#{e_number} and state != '対応済'
+</select>
+
 </mapper>

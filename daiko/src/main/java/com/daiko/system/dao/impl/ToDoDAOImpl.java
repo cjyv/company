@@ -50,5 +50,10 @@ public int todoUpdate(Map<String, Object> map) {
 	// TODO Auto-generated method stub
 	return ss.update("todo.update", map);
 }
+@Override
+public Map<String, Object> progressTodo(int e_number) {
+	// TODO Auto-generated method stub
+	return ss.selectOne("todo.progress", e_number);
+}
 
 }

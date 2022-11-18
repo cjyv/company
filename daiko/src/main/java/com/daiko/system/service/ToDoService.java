@@ -19,4 +19,6 @@ public interface ToDoService {
 	public void todoFileDelete(List<Integer>list);
 	
 	public int todoUpdate(Map<String, Object> map, HttpSession session);
+	
+	public Map<String, Object> progressTodo(HttpSession session);
  }

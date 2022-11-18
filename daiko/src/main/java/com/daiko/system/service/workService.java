@@ -9,4 +9,6 @@ public interface workService {
 
 	
 	public List<Map<String, Object>> list(Map<String, Object>map,HttpSession session);
+	
+	public Map<String, Object> progress(HttpSession session);
 }

@@ -72,6 +72,12 @@ public class ToDoServiceImpl implements ToDoService {
 		
 		return tdo.todoUpdate(map);
 	}
+	@Override
+	public Map<String, Object> progressTodo(HttpSession session) {
+		int e_number = (Integer) session.getAttribute("e_number");
+		
+		return tdo.progressTodo(e_number);
+	}
 	
 	
 }

@@ -7,5 +7,9 @@ select seq,state,a_name,a_e_number,b_name,b_e_number,title,date_format(start_tim
 </if>
 </select>
 
+<select id="progress" parameterType="int" resultType="map">
+select count(*) as count from Workflow where a_e_number=#{e_number} and  state != '承認済'
+</select>
+
 </mapper>
 

@@ -24,4 +24,10 @@ public class WorkServiceImpl implements workService {
 	
 		return wdao.list(map);
 	}
+	
+	@Override
+	public Map<String, Object> progress(HttpSession session) {
+		int e_number = (Integer) session.getAttribute("e_number");
+		return wdao.progressWork(e_number);
+	}
 }

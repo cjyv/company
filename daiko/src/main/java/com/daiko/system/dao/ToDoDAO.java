@@ -18,4 +18,6 @@ public interface ToDoDAO {
 	public List<String> todoFileDelete(List<Integer> list);
 	
 	public int todoUpdate(Map<String, Object>map);
+	
+	public Map<String, Object> progressTodo(int e_number);
 }
