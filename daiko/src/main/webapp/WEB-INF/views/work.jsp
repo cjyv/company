@@ -35,7 +35,7 @@ else if(type==3){
 		for (var i = 0; i < res.length; i++) {
 		
 			if (res[i].state==='申請済' || res[i].state==='承認中') {
-				str+="<tr><td id='seq'>"+res[i].seq+"</td><td id='title'>"+res[i].title+"</td><td id='state'>"+res[i].state+"</td><td id='intermediate_name'>"+res[i].intermediate_name+"</td><td id='endtime'>"+res[i].end_time+"</td><td id='starttime'>"+res[i].start_time+"</td></tr>"
+				str+="<tr><td id='seq'>"+res[i].seq+"</td><td id='title'>"+res[i].title+"</td><td id='state'>"+res[i].state+"</td><td id='intermediate'>"+res[i].intermediate_name+"-"+res[i].b_name+"</td><td id='endtime'>"+res[i].end_time+"</td><td id='starttime'>"+res[i].start_time+"</td></tr>"
 			}
 		}
 	
@@ -54,8 +54,8 @@ else if(type==4){
 	let str="";
 		for (var i = 0; i < res.length; i++) {
 		
-			if (res[i].state==='承認済' ) {
-				str+="<tr><td><input type='checkbox' class='check' name = 'check' value="+res[i].seq+"></td><td id='seq'>"+res[i].seq+"</td><td id='title'>"+res[i].title+"</td><td id='state'>"+res[i].state+"</td><td id='b_name'>"+res[i].b_name+"</td><td id='endtime'>"+res[i].end_time+"</td><td id='starttime'>"+res[i].start_time+"</td></tr>"
+			if (res[i].state==='承認済'|| res[i].state==='拒否' ) {
+				str+="<tr><td><input type='checkbox' class='check' name = 'check' value="+res[i].seq+"></td><td id='seq'>"+res[i].seq+"</td><td id='title'>"+res[i].title+"</td><td id='state'>"+res[i].state+"</td><td id='intermediat'>"+res[i].intermediate_name+"-"+res[i].b_name+"</td><td id='endtime'>"+res[i].end_time+"</td><td id='starttime'>"+res[i].start_time+"</td></tr>"
 			}
 		}
 	
@@ -68,12 +68,49 @@ else if(type==4){
 
 else if(type==5){
 	document.getElementById("thead").innerHTML="<tr><th>申請番号</th><th>件名</th><th>状態</th><th>承認経路</th><th>申請者</th><th>承認期限</th><th>申請日時</th></tr>";
-
+	
+	fetch("worklist?type=5")
+	.then(function(res) {
+		return res.json();
+	})
+	.then(function(res) {
+	let str="";
+		for (var i = 0; i < res.length; i++) {
+		
+			if (res[i].state==='申請済' && res[i].intermediate_e_number==${e_number}) {
+				str+="<tr onclick='workFormSeq("+res[i].seq+")'><td id='seq'>"+res[i].seq+"</td><td id='title'>"+res[i].title+"</td><td id='state'>"+res[i].state+"</td><td id='intermediate'>"+res[i].intermediate_name+"-"+res[i].b_name+"</td><td id='a_name'>"+res[i].a_name+"</td><td id='endtime'>"+res[i].end_time+"</td><td id='starttime'>"+res[i].start_time+"</td></tr>"
+			}
+			else if(res[i].state==='承認中' && res[i].b_e_number==${e_number}){
+				str+="<tr onclick='workFormSeq("+res[i].seq+")'><td id='seq'>"+res[i].seq+"</td><td id='title'>"+res[i].title+"</td><td id='state'>"+res[i].state+"</td><td id='intermediate'>"+res[i].intermediate_name+"-"+res[i].b_name+"</td><td id='a_name'>"+res[i].a_name+"</td><td id='endtime'>"+res[i].end_time+"</td><td id='starttime'>"+res[i].start_time+"</td></tr>"
+			}
+		}
+	
+		document.getElementById("tbody").innerHTML=str;
+		
+	})
 
 
 }
 else if(type==6){
-	document.getElementById("thead").innerHTML="<tr><th></th><th>申請番号</th><th>件名</th><th>状態</th><th>承認経路</th><th>申請者</th><th>承認期限</th><th>申請日時</th></tr>";
+	document.getElementById("thead").innerHTML="<tr><th>申請番号</th><th>件名</th><th>状態</th><th>承認経路</th><th>申請者</th><th>承認期限</th><th>申請日時</th></tr>";
+	fetch("worklist?type=6")
+	.then(function(res) {
+		return res.json();
+	})
+	.then(function(res) {
+	let str="";
+		for (var i = 0; i < res.length; i++) {
+		
+			if (res[i].state==='承認済' || res[i].state==='拒否') {
+				str+="<tr><td id='seq'>"+res[i].seq+"</td><td id='title'>"+res[i].title+"</td><td id='state'>"+res[i].state+"</td><td id='intermediate'>"+res[i].intermediate_name+"-"+res[i].b_name+"</td><td id='a_name'>"+res[i].a_name+"</td><td id='endtime'>"+res[i].end_time+"</td><td id='starttime'>"+res[i].start_time+"</td></tr>"
+			}
+		}
+	
+		document.getElementById("tbody").innerHTML=str;
+		
+	})
+
+
 }
 }
 </script>
@@ -175,6 +212,20 @@ else if(type==6){
 	function workForm(title) {
 		
 		 var url = "workForm?title="+title;
+	     var name = "workForm";
+	     var option = "width = 665, height = 600, top = 200, left = 200"
+	     window.open(url, name, option);
+		
+		window.open(url,name,option);
+	} 
+
+
+	</script>
+		<script type="text/javascript">
+	
+	function workFormSeq(seq) {
+		
+		 var url = "workForm?seq="+seq;
 	     var name = "workForm";
 	     var option = "width = 665, height = 600, top = 200, left = 200"
 	     window.open(url, name, option);

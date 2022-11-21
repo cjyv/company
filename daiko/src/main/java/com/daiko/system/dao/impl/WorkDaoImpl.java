@@ -26,4 +26,22 @@ public class WorkDaoImpl implements WorkDAO{
 		// TODO Auto-generated method stub
 		return ss.selectOne("work.progress", e_number);
 	}
+	
+	@Override
+	public int workInsert(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return ss.insert("work.insert", map);
+	}
+	
+	@Override
+	public Map<String, Object> detail(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return ss.selectOne("work.detail", map);
+	}
+	
+	@Override
+	public int workUpdate(Map<String, Object> map) {
+		System.out.println(map);
+		return ss.update("work.update", map);
+	}
 }

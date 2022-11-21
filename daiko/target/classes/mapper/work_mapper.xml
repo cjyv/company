@@ -2,14 +2,36 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="work">
 <select id="list" parameterType="map" resultType="map">
-<if test="type!=5 or type!=6 or type!=2">
+<if test="(type!=5 and type!=6) and type!=2">
 select seq,state,a_name,a_e_number,b_name,b_e_number,title,date_format(start_time,'%Y-%m-%d') as start_time,date_format(end_time,'%Y-%m-%d')as end_time,intermediate_name,intermediate_e_number from Workflow where a_e_number=#{e_number}
+</if>
+<if test="(type==5 or type==6) and type!=2">
+select seq,state,a_name,a_e_number,b_name,b_e_number,title,date_format(start_time,'%Y-%m-%d') as start_time,date_format(end_time,'%Y-%m-%d')as end_time,intermediate_name,intermediate_e_number from Workflow where b_e_number=#{e_number} or intermediate_e_number=#{e_number}
 </if>
 </select>
 
 <select id="progress" parameterType="int" resultType="map">
-select count(*) as count from Workflow where a_e_number=#{e_number} and  state != '承認済'
+select count(*) as count from Workflow where a_e_number=#{e_number} and (state != '承認済' and state != '拒否')
 </select>
+
+<insert id="insert" parameterType="map">
+insert into Workflow(state,a_name,a_e_number,b_name,b_e_number,title,start_time,end_time,intermediate_name,intermediate_e_number)
+values ('申請済',#{a_name},#{a_e_number},(select name from employee where e_number = #{b_e_number}),#{b_e_number},#{title},
+#{start_time},#{end_time},(select name from employee where e_number =#{intermediate_e_number}), #{intermediate_e_number}
+)
+</insert>
+
+<select id="detail" parameterType="map" resultType="map">
+select seq,state,a_name,a_e_number,b_name,b_e_number,title,date_format(start_time,'%Y-%m-%d') as start_time,date_format(end_time,'%Y-%m-%d')as end_time,intermediate_name,intermediate_e_number from Workflow where seq = #{seq}
+</select>
+
+<update id="update" parameterType="map" >
+update Workflow set state
+<if test='judgment=="承認" and state=="申請済"'>= '承認中'</if>
+<if test='judgment=="承認" and state=="承認中"'>= '承認済'</if>
+<if test='judgment=="拒否"'>= '拒否'</if>
+where seq=#{seq}
+</update>
 
 </mapper>
 

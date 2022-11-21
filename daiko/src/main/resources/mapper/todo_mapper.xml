@@ -47,7 +47,7 @@ delete from todo where seq in (<foreach collection="list" item="checked" separat
 select referenceFile from todo where seq in (<foreach collection="list" item="checked" separator=",">#{checked}</foreach>)
 </select>
 
-<update id="update">
+<update id="update" >
 update todo set title=#{title},content=#{content},T_dateTime=#{T_dateTime},T_endTime=#{T_endTime},state=#{state}
 <if test="referenceFile!=null">,referenceFile=#{referenceFile},realFileName=#{realFileName}</if>
 where seq=#{seq}

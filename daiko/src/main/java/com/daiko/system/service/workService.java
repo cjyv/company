@@ -11,4 +11,10 @@ public interface workService {
 	public List<Map<String, Object>> list(Map<String, Object>map,HttpSession session);
 	
 	public Map<String, Object> progress(HttpSession session);
+	
+	public int workInsert(Map<String, Object>map,HttpSession session);
+	
+	public Map<String, Object> detail(Map<String, Object>map);
+	
+	public int workUpdate(Map<String, Object>map);
 }
