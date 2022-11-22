@@ -16,7 +16,7 @@
 			<!-- Page Heading -->
 			<h1 class="h3 mb-2 text-gray-800">メッセージ</h1>
     
-
+           
 			<!-- DataTales Example -->
 			<div class="card shadow mb-4">
 				<div class="card-body">
@@ -32,13 +32,13 @@
                                     </thead>
                                     <tbody>
                                     <c:forEach items="${employeeList}" var="employeeList">
-                                    
+                                    <c:if test="${e_number != employeeList.e_number }">
                                         <tr onclick="messageForm(${employeeList.e_number})">
                                             <td>${employeeList.e_number}</td>
                                             <td>${employeeList.name }</td>
                                             <td>${employeeList.department}</td>
                                         </tr>
-                        
+                        </c:if>
                                         </c:forEach>
                                     </tbody>
                                 </table>
