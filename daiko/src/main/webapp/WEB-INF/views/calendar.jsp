@@ -149,7 +149,7 @@
 
 		  // 이번달 날짜 표시하기
 		  for (let i = 1; i <= lastDay; i++) {    
-		    htmlDummy += "<div  onclick='test("+i+","+nowMonth+","+nowYear+")'>"+i+"</div>";
+		    htmlDummy += "<div  onclick='calendarForm("+i+","+nowMonth+","+nowYear+")'>"+i+"</div>";
 		  }
 
 		  // 다음달 날짜 표시하기
@@ -181,9 +181,16 @@
 		
 	</script>
 	<script type="text/javascript">
-	function test(day,month,year) {
-		console.log(year+"-"+month+"-"+day);
+	function calendarForm(day,month,year) {
+		var date= year+"-"+month+"-"+day;
+		 var url = "calendarForm?date="+date;
+	     var name = "calendarForm";
+	     var option = "width = 665, height = 600, top = 200, left = 200";
+	     window.open(url, name, option);
+		
+		window.open(url,name,option);
 	}
 	</script>
+	
 </body>
 </html>

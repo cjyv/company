@@ -17,7 +17,7 @@ where e_number = #{e_number}
 </update>
 
 <select id="employeelist" resultType="map">
-select e_number,name from employee
+select e_number,name,department from employee
 </select>
 
 </mapper>
