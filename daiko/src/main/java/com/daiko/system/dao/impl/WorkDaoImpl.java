@@ -41,7 +41,12 @@ public class WorkDaoImpl implements WorkDAO{
 	
 	@Override
 	public int workUpdate(Map<String, Object> map) {
-		System.out.println(map);
+
 		return ss.update("work.update", map);
+	}
+	@Override
+	public int workCofirm(int e_number) {
+		// TODO Auto-generated method stub
+		return ss.selectOne("work.confirm", e_number);
 	}
 }

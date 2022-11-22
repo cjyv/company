@@ -47,4 +47,10 @@ public class WorkServiceImpl implements workService {
 		
 		return wdao.workUpdate(map);
 	}
+	
+	@Override
+	public int workConfirm(HttpSession session) {
+		int e_number = (Integer) session.getAttribute("e_number");
+		return wdao.workCofirm(e_number);
+	}
 }

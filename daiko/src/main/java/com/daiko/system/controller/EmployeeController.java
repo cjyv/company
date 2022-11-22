@@ -22,12 +22,18 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.daiko.system.dto.EmployeeDTO;
 import com.daiko.system.service.EmployeeService;
+import com.daiko.system.service.ToDoService;
+import com.daiko.system.service.workService;
 
 @Controller
 public class EmployeeController {
 
 	@Inject
 	private EmployeeService employeeservice;
+	@Inject
+	private ToDoService todoservice;
+	@Inject
+	private workService workservice;
 	private final String uploadImagePath ="C:\\Users\\choij\\Desktop\\test(java)\\daiko\\src\\main\\webapp\\resources\\img/";
 
 	@RequestMapping(value = "login", method = RequestMethod.POST)
@@ -41,6 +47,9 @@ public class EmployeeController {
 		else {
 			model.addAttribute("name",name);
 			model.addAttribute("profilePhoto", session.getAttribute("profilePhoto"));
+			model.addAttribute("todoCount",todoservice.progressTodo(session).get("count(seq)"));
+			model.addAttribute("workCount", workservice.progress(session).get("count"));
+			model.addAttribute("workCount2", workservice.workConfirm(session));
 			model.addAttribute("contentPage", "home.jsp");
 		return "index";
 		}

@@ -33,5 +33,9 @@ update Workflow set state
 where seq=#{seq}
 </update>
 
+<select id="confirm" parameterType="int" resultType="int">
+select count(*)  from Workflow where (b_e_number=#{e_number} and state ='承認中') or (intermediate_e_number=#{e_number} and state ='申請済')
+</select>
+
 </mapper>
 

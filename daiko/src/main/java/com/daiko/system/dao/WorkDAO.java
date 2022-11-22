@@ -15,4 +15,6 @@ public int workInsert(Map<String, Object>map);
 public Map<String, Object> detail(Map<String, Object>map);
 
 public int workUpdate(Map<String, Object>map);
+
+public int workCofirm(int e_number);
 }

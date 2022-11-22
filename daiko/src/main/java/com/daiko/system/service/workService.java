@@ -17,4 +17,6 @@ public interface workService {
 	public Map<String, Object> detail(Map<String, Object>map);
 	
 	public int workUpdate(Map<String, Object>map);
+	
+	public int workConfirm(HttpSession session);
 }

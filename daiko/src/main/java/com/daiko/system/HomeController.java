@@ -33,6 +33,7 @@ private workService workservice;
 	else {
 		model.addAttribute("todoCount",todoservice.progressTodo(session).get("count(seq)"));
 		model.addAttribute("workCount", workservice.progress(session).get("count"));
+		model.addAttribute("workCount2", workservice.workConfirm(session));
 		model.addAttribute("contentPage", "home.jsp");
 		return "index";
 	}
