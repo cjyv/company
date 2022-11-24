@@ -41,6 +41,7 @@ public class MessageController {
 	@RequestMapping(value = "messageForm")
 	public String messageForm(@RequestParam Map<String, Object>map, HttpSession session,Model model) {
 		model.addAttribute("b_e_number",map.get("b_e_number") );
+		model.addAttribute("profilePhoto", session.getAttribute("profilePhoto"));
 		return "popup/messageForm";
 	}
 	
@@ -54,12 +55,12 @@ public class MessageController {
 	@ResponseBody
 	@RequestMapping(value = "messageInsert", method =RequestMethod.POST )
 	public void messageInsert(@RequestBody Map<String,Object>map, HttpSession session) {
-	
 		JSONPObject jsonpObject = new JSONPObject("b_e_number", map.get("b_e_number"));
 		JSONPObject jsonpObject2 = new JSONPObject("b_e_number", map.get("message"));
 		Map<String, Object> message = new HashMap<String, Object>();
 		message.put("b_e_number", jsonpObject);
 		message.put("message", jsonpObject2);
+		
 		
 		messageservice.messageInsert(map, session);
 		

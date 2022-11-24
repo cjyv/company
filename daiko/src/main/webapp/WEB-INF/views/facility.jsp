@@ -20,7 +20,7 @@
 				})
 				.then(
 						function(res) {
-						
+						console.log(res);
 							
 							let daystitle ="<span id='startDay'>" + res[0].startDay + "</span> ~ <span id='endDay'>"
 									+ res[0].endDay +"</span>";
@@ -30,8 +30,8 @@
 							for (var i = 0; i < 7; i++) {
 							document.getElementsByClassName('days')[i].style.backgroundColor="white";
 								document.getElementById('days' + i).innerHTML="";
-						
-				
+									
+									
 									
 								document.getElementById('days' + i).innerHTML = res[0].days[i];
 								if (res[0].days[i].includes("土")
@@ -46,17 +46,17 @@
 								let dateFormat = date.getFullYear()+"/"+(date.getMonth()+1)+"/"+date.getDate()+"("+arrDayStr[date.getDay()]+")";
 								let dateTime = date.getHours();
 								let endingTime = res[j+1].endingTime.split(':',1);
-							
+								
 							for (var y = 0; y <= 6; y++) {
 								const compare = "2022/"+document.getElementById('days' +y).innerHTML;
-											
 								
 								if(dateFormat==compare){
 								
 									
 								
-								for (var h = 9; h <=18; h++) {
-									for (var m = 9; m <= 18; m++) {
+								for (var h = 0; h <=24; h++) {
+									
+									for (var m = 0; m <= 24; m++) {
 										if (dateTime==h && endingTime[0]==m) {
 											
 											
@@ -80,6 +80,7 @@
 	<div id="content">
 		<!-- Begin Page Content -->
 		<div class="container-fluid">
+		
 			<!-- Page Heading -->
 			<h1 class="h3 mb-2 text-gray-800">施設予約</h1>
 			<div class="card shadow mb-4">
@@ -157,6 +158,7 @@
 							</tfoot>
 						</table>
 					</form>
+					
 				</div>
 			</div>
 		</div>

@@ -52,7 +52,7 @@
 function messageForm(e_number) {
 	 var url = "messageForm?b_e_number="+e_number;
      var name = "messageForm";
-     var option = "width = 665, height = 600, top = 200, left = 200";
+     var option = "width = 420, height = 470, top = 200, left = 200";
      window.open(url, name, option);
 	
 	window.open(url,name,option);

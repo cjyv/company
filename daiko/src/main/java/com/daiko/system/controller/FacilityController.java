@@ -52,7 +52,7 @@ public class FacilityController {
 	@RequestMapping(value = "facilityInsert",method = RequestMethod.POST)
 	public void facilityInsert(@RequestParam Map<String, Object>map,HttpServletResponse response,HttpSession session) throws IOException {
 		
-		
+	
 		fs.facilityInsert(map, session);
 		//popup close
 		 StringBuffer sb1 = new StringBuffer();
