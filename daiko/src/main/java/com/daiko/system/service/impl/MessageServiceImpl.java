@@ -23,4 +23,10 @@ public class MessageServiceImpl  implements MessageService{
 		
 		return mdao.messageList(map);
 	}
+	
+	@Override
+	public int messageInsert(Map<String, Object> map, HttpSession session) {
+		map.put("a_e_number", session.getAttribute("e_number"));
+		return mdao.messageInsert(map);
+	}
 }

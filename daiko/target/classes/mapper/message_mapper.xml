@@ -6,4 +6,8 @@ select a.seq,a.a_e_number,a.b_e_number,a.message,a.state,b.profile from message 
 where (a.a_e_number=#{e_number} or a.b_e_number=#{e_number}) and (a.a_e_number=#{b_e_number} or a.b_e_number=#{b_e_number})  order by seq
 </select>
 
+
+<insert id="insert" parameterType="map">
+insert into message(a_e_number,b_e_number,message,state) values(#{a_e_number},#{b_e_number},#{message},'既読')
+</insert>
 </mapper>

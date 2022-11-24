@@ -20,4 +20,11 @@ public class MessageDaoImpl implements MessageDAO {
 		// TODO Auto-generated method stub
 		return ss.selectList("message.list", map);
 	}
+	
+	@Override
+	public int messageInsert(Map<String, Object> map) {
+		return ss.insert("message.insert",map);
+		// TODO Auto-generated method stub
+		//return ss.insert("message.insert",map);
+	}
 }
