@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="calendar">
+
+<select id="memoList" parameterType="map" resultType="map">
+select seq,content from memo where e_number = #{e_number} and start_time <![CDATA[<=]]>  #{date} and end_time <![CDATA[>=]]> #{date} 
+</select>
+
+<select id="todoList" parameterType="map" resultType="map">
+select seq,title from todo  where e_number=#{e_number} and T_dateTime <![CDATA[<=]]>   #{date} and T_endTime  <![CDATA[>=]]> #{date}  and state != '対応済' 
+</select>
+
+<select id="facilityList" parameterType="map" resultType="map">
+select seq,catalog,date_format(runingTime,'%H:%i') as runingTime,date_format(endingTime,'%H:%i') as endingTime  from facility  where e_number=#{e_number} and runingTime <![CDATA[<=]]>   #{lastTime} and runingTime <![CDATA[>=]]> #{date}
+
+</select>
+</mapper>
