@@ -36,4 +36,9 @@ public class CalendarServiceImpl implements CalendarService{
 		// TODO Auto-generated method stub
 		return cdao.calendarTodoList(map);
 	}
+	@Override
+	public int memoInsert(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return cdao.memoInsert(map);
+	}
 }

@@ -14,4 +14,8 @@ select seq,title from todo  where e_number=#{e_number} and T_dateTime <![CDATA[<
 select seq,catalog,date_format(runingTime,'%H:%i') as runingTime,date_format(endingTime,'%H:%i') as endingTime  from facility  where e_number=#{e_number} and runingTime <![CDATA[<=]]>   #{lastTime} and runingTime <![CDATA[>=]]> #{date}
 
 </select>
+<insert id="memoInsert" parameterType="map">
+insert into memo(e_number,content,start_time,end_time) values(#{e_number},#{content},#{start_time},#{end_time})
+</insert>
+
 </mapper>

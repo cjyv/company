@@ -33,4 +33,10 @@ public class CalendarDaoImpl implements CalendarDAO{
 		// TODO Auto-generated method stub
 		return ss.selectList("calendar.facilityList", map);
 	}
+	
+	@Override
+	public int memoInsert(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return ss.insert("calendar.memoInsert", map);
+	}
 }

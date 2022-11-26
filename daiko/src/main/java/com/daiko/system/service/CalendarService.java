@@ -11,4 +11,5 @@ public interface CalendarService {
 	
 	public List<Map<String, Object>> calendarTodoList(Map<String, Object>map);
 	
+	public int memoInsert(Map<String, Object>map);
 }
