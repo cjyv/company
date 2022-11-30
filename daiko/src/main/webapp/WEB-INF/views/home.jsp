@@ -104,7 +104,7 @@
 									<div
 										class="text-xs font-weight-bold text-warning text-uppercase mb-1">
 										メッセージ（未読）</div>
-									<div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+									<div class="h5 mb-0 font-weight-bold text-gray-800">${messageCount}</div>
 								</div>
 								<div class="col-auto">
 									<i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -125,8 +125,7 @@
 						<!-- Card Header - Dropdown -->
 						<div
 							class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-							<h6 class="m-0 font-weight-bold text-primary">Earnings
-								Overview</h6>
+							<h6 class="m-0 font-weight-bold text-primary">今年対応済業務数</h6>
 							<div class="dropdown no-arrow">
 								<a class="dropdown-toggle" href="#" role="button"
 									id="dropdownMenuLink" data-toggle="dropdown"

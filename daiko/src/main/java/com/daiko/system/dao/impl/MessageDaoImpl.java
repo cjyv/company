@@ -27,4 +27,16 @@ public class MessageDaoImpl implements MessageDAO {
 		// TODO Auto-generated method stub
 		//return ss.insert("message.insert",map);
 	}
+	
+	@Override
+	public int unreadMessage(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return ss.selectOne("message.count", map);
+	}
+	
+	@Override
+	public int readMessage(Map<String, Object> map) {
+		
+		return ss.update("message.readUpdate",map);
+	}
 }

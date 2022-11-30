@@ -20,4 +20,6 @@ public interface ToDoDAO {
 	public int todoUpdate(Map<String, Object>map);
 	
 	public Map<String, Object> progressTodo(int e_number);
+	
+	public Map<String, Object> yearWork(int e_number);
 }

@@ -79,5 +79,10 @@ public class ToDoServiceImpl implements ToDoService {
 		return tdo.progressTodo(e_number);
 	}
 	
+	@Override
+	public Map<String, Object> yearWork(HttpSession session) {
+		int e_number = (Integer) session.getAttribute("e_number");
+		return tdo.yearWork(e_number);
+	}
 	
 }

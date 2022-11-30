@@ -42,6 +42,7 @@ public class MessageController {
 	public String messageForm(@RequestParam Map<String, Object>map, HttpSession session,Model model) {
 		model.addAttribute("b_e_number",map.get("b_e_number") );
 		model.addAttribute("profilePhoto", session.getAttribute("profilePhoto"));
+		messageservice.readMessage(map, session);
 		return "popup/messageForm";
 	}
 	

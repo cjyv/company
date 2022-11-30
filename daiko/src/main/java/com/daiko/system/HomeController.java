@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.daiko.system.service.MessageService;
 import com.daiko.system.service.ToDoService;
 import com.daiko.system.service.workService;
 
@@ -22,6 +23,8 @@ public class HomeController {
 private ToDoService todoservice;
 @Inject
 private workService workservice;
+@Inject
+private MessageService messageservice;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(HttpSession session,  Model model) {
@@ -34,6 +37,8 @@ private workService workservice;
 		model.addAttribute("todoCount",todoservice.progressTodo(session).get("count(seq)"));
 		model.addAttribute("workCount", workservice.progress(session).get("count"));
 		model.addAttribute("workCount2", workservice.workConfirm(session));
+		model.addAttribute("messageCount", messageservice.unreadMessage(session));
+		model.addAttribute("yearWork", todoservice.yearWork(session));
 		model.addAttribute("contentPage", "home.jsp");
 		return "index";
 	}

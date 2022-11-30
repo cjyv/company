@@ -21,4 +21,6 @@ public interface ToDoService {
 	public int todoUpdate(Map<String, Object> map, HttpSession session);
 	
 	public Map<String, Object> progressTodo(HttpSession session);
+	
+	public Map<String, Object> yearWork(HttpSession session);
  }

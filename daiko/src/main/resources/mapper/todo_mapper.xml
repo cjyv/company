@@ -50,12 +50,30 @@ select referenceFile from todo where seq in (<foreach collection="list" item="ch
 <update id="update" >
 update todo set title=#{title},content=#{content},T_dateTime=#{T_dateTime},T_endTime=#{T_endTime},state=#{state}
 <if test="referenceFile!=null">,referenceFile=#{referenceFile},realFileName=#{realFileName}</if>
+<if test='state.equals("対応済")'>,realEndTime=now()</if>
 where seq=#{seq}
 
 </update>
 
 <select id="progress" parameterType="int" resultType="map">
 select count(seq) from todo where e_number=#{e_number} and state != '対応済'
+</select>
+
+<select id="yearWork" parameterType="int" resultType="map">
+select 
+count(case when realEndTime<![CDATA[>=]]>'2022-01-01'and realEndTime<![CDATA[<=]]>'2022-01-31' THEN 1 END) as 'Jan',
+count(case when realEndTime<![CDATA[>=]]>'2022-02-01'and realEndTime<![CDATA[<=]]>'2022-02-28' THEN 1 END) as 'Feb',
+count(case when realEndTime<![CDATA[>=]]>'2022-03-01'and realEndTime<![CDATA[<=]]>'2022-03-31' THEN 1 END) as 'Mar',
+count(case when realEndTime<![CDATA[>=]]>'2022-04-01'and realEndTime<![CDATA[<=]]>'2022-04-30' THEN 1 END) as 'Apr',
+count(case when realEndTime<![CDATA[>=]]>'2022-05-01'and realEndTime<![CDATA[<=]]>'2022-05-31' THEN 1 END) as 'May',
+count(case when realEndTime<![CDATA[>=]]>'2022-06-01'and realEndTime<![CDATA[<=]]>'2022-06-30' THEN 1 END) as 'Jun',
+count(case when realEndTime<![CDATA[>=]]>'2022-07-01'and realEndTime<![CDATA[<=]]>'2022-07-31' THEN 1 END) as 'Jul',
+count(case when realEndTime<![CDATA[>=]]>'2022-08-01'and realEndTime<![CDATA[<=]]>'2022-08-31' THEN 1 END) as 'Aug',
+count(case when realEndTime<![CDATA[>=]]>'2022-09-01'and realEndTime<![CDATA[<=]]>'2022-09-30' THEN 1 END) as 'Sep',
+count(case when realEndTime<![CDATA[>=]]>'2022-10-01'and realEndTime<![CDATA[<=]]>'2022-10-31' THEN 1 END) as 'Oct',
+count(case when realEndTime<![CDATA[>=]]>'2022-11-01'and realEndTime<![CDATA[<=]]>'2022-11-30' THEN 1 END) as 'Nov',
+count(case when realEndTime<![CDATA[>=]]>'2022-12-01'and realEndTime<![CDATA[<=]]>'2022-12-31' THEN 1 END) as 'Dec'
+ from todo where state='対応済' and e_number =#{e_number}
 </select>
 
 </mapper>

@@ -9,5 +9,8 @@ public interface MessageDAO {
 	
 	public int messageInsert(Map<String, Object>map);
 	
+	public int unreadMessage(Map<String, Object>map);
+	
+	public int readMessage(Map<String, Object>map);
 
 }

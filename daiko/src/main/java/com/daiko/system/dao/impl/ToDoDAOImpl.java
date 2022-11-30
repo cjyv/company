@@ -56,4 +56,10 @@ public Map<String, Object> progressTodo(int e_number) {
 	return ss.selectOne("todo.progress", e_number);
 }
 
+@Override
+public Map<String, Object> yearWork(int e_number) {
+	// TODO Auto-generated method stub
+	return ss.selectOne("todo.yearWork", e_number);
+}
+
 }

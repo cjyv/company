@@ -8,6 +8,15 @@ where (a.a_e_number=#{e_number} or a.b_e_number=#{e_number}) and (a.a_e_number=#
 
 
 <insert id="insert" parameterType="map">
-insert into message(a_e_number,b_e_number,message,state) values(#{a_e_number},#{b_e_number},#{message},'既読')
+insert into message(a_e_number,b_e_number,message,state) values(#{a_e_number},#{b_e_number},#{message},'未読')
 </insert>
+
+<select id="count" parameterType="map" resultType="int">
+select count(*) from message where state = '未読' and b_e_number=#{e_number}
+</select>
+
+<update id="readUpdate" parameterType="map">
+update message set state='既読' where b_e_number=#{e_number} and a_e_number=#{b_e_number} and state='未読'
+</update>
+
 </mapper>

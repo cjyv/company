@@ -11,4 +11,8 @@ public interface MessageService {
 	public List<Map<String, Object>> messageList(Map<String, Object>map,HttpSession session);
 	
 	public int messageInsert(Map<String, Object>map,HttpSession session);
+	
+	public int unreadMessage(HttpSession session);
+	
+	public int readMessage(Map<String, Object>map,HttpSession session);
 }

@@ -43,7 +43,7 @@
     		for (var i = 0; i < res.length; i++) {
     			if (res[i].b_e_number==b_e_number) {
     		
-                    var _tar = $(".chat_wrap .inner").append('<div class="item mymsg"><div class="box"><p class="msg">'+res[i].message+'</p></div><img style="width=50px;height:30px;" src="resources/img/'+res[i].profile+'"></div>');
+                    var _tar = $(".chat_wrap .inner").append('<div class="item mymsg"><div class="box"><p class="msg">'+res[i].message+'</p></div><img style="width=50px;height:30px;" src="resources/img/'+res[i].profile+'"><p style="color;gray;font-size:5px">'+res[i].state+'</p></div>');
                     var lastItem = $(".chat_wrap .inner").find(".item");
                     setTimeout(function(){
                         lastItem.addClass("on");
