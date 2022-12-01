@@ -15,4 +15,6 @@ public interface NoticeDAO {
 	public int noticeDelete(Map<String, Object>map);
 	
 	public int noticeUpdate(Map<String, Object>map);
+	
+	public Map<String, Object> recently();
 }

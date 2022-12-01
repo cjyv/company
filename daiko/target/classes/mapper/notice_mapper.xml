@@ -26,4 +26,8 @@ update notice set title=#{title},content=#{content},n_date=now(),
 where seq=#{seq}
 </update>
 
+<select id="recently" resultType="map">
+select title,content from notice order by seq desc limit 1
+</select>
+
 </mapper>

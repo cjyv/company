@@ -15,4 +15,5 @@ public interface NoticeService {
 	
 	public int update(Map<String, Object>map);
 	
+	public Map<String, Object> recently();
 }

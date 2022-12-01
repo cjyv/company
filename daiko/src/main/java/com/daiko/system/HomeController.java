@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.daiko.system.service.MessageService;
+import com.daiko.system.service.NoticeService;
 import com.daiko.system.service.ToDoService;
 import com.daiko.system.service.workService;
 
@@ -25,6 +26,8 @@ private ToDoService todoservice;
 private workService workservice;
 @Inject
 private MessageService messageservice;
+@Inject
+private NoticeService noticeservice;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(HttpSession session,  Model model) {
@@ -39,6 +42,7 @@ private MessageService messageservice;
 		model.addAttribute("workCount2", workservice.workConfirm(session));
 		model.addAttribute("messageCount", messageservice.unreadMessage(session));
 		model.addAttribute("yearWork", todoservice.yearWork(session));
+		model.addAttribute("recentlyNews", noticeservice.recently());
 		model.addAttribute("contentPage", "home.jsp");
 		return "index";
 	}

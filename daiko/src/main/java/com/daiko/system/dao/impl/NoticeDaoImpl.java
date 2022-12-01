@@ -45,4 +45,10 @@ public class NoticeDaoImpl implements NoticeDAO{
 		// TODO Auto-generated method stub
 		return ss.update("notice.Update",map);
 	}
+	
+	@Override
+	public Map<String, Object> recently() {
+		// TODO Auto-generated method stub
+		return ss.selectOne("notice.recently");
+	}
 }

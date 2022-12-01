@@ -47,4 +47,9 @@ public class NoticeServiceImpl implements NoticeService{
 		return ndao.noticeUpdate(map);
 	}
 	
+	@Override
+	public Map<String, Object> recently() {
+		// TODO Auto-generated method stub
+		return ndao.recently();
+	}
 }
