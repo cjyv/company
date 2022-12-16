@@ -12,7 +12,6 @@
     <meta name="author" content="">
 
     <title>DaikoIWS System - Dashboard</title>
-	<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
     <!-- Custom fonts for this template-->
     <link href="resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -25,6 +24,7 @@
     <link href="resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     
 
+	<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -447,14 +447,15 @@
     <script src="resources/vendor/jquery/jquery.min.js"></script>
     <script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Custom scripts for all pages-->
+    <script src="resources/js/sb-admin-2.min.js"></script>
     <!-- Core plugin JavaScript-->
     <script src="resources/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="resources/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
     <script src="resources/vendor/chart.js/Chart.min.js"></script>
+    
 
     <!-- Page level custom scripts -->
     <script >
