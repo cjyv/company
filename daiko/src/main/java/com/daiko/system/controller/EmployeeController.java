@@ -73,6 +73,7 @@ public class EmployeeController {
 		return "login";
 	}
 	
+	//profile
 	
 	@RequestMapping(value = "profile", method = RequestMethod.GET)
 	public String profile(Model model,HttpSession session) {
