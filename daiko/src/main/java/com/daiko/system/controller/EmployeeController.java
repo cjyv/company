@@ -41,7 +41,7 @@ public class EmployeeController {
 	@Inject 
 	private NoticeService noticeservice;
 	private final String uploadImagePath ="C:\\Users\\choij\\Desktop\\test(java)\\daiko\\src\\main\\webapp\\resources\\img/";
-
+	//login
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public String login(@ModelAttribute EmployeeDTO dto ,Model model, HttpSession session) {
 		String name = employeeservice.loginCheck(dto, session);
