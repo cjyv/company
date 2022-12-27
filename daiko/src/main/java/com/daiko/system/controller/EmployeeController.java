@@ -64,6 +64,7 @@ public class EmployeeController {
 		return "index";
 		}
 	}
+	//LOGOUT
 	
 	@RequestMapping(value = "logOut", method = RequestMethod.GET)
 	public String logOut(HttpSession session) {
@@ -71,6 +72,7 @@ public class EmployeeController {
 		employeeservice.logOut(session);
 		return "login";
 	}
+	
 	
 	@RequestMapping(value = "profile", method = RequestMethod.GET)
 	public String profile(Model model,HttpSession session) {
