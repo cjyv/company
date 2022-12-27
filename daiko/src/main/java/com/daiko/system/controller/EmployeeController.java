@@ -90,6 +90,7 @@ public class EmployeeController {
 		return "index";
 	}
 	
+	//profileUpdate
 	@RequestMapping(value = "profileUpdate.do", method = RequestMethod.POST, produces="text/plain;charset=UTF-8" )
 	public String profileUpdate(@RequestParam Map<String, Object> map,MultipartFile file,Model model, HttpSession session) throws IllegalStateException, IOException {
 		String tellphone1= String.valueOf(map.get("tellphone1"));
