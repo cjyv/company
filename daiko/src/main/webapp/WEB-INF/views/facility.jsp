@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 
 <script>
-//날짜이동
+//날짜이동(date)
 	function facilitySchedule(startDay,facilityNo) {
 		for (var t = 0; t <7; t++) {
 			
