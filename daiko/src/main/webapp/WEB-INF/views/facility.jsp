@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 
 <script>
+//날짜이동
 	function facilitySchedule(startDay,facilityNo) {
 		for (var t = 0; t <7; t++) {
 			
@@ -24,6 +25,7 @@
 							
 							let daystitle ="<span id='startDay'>" + res[0].startDay + "</span> ~ <span id='endDay'>"
 									+ res[0].endDay +"</span>";
+							let year = res[0].startDay.substr(0,4); 
 							document.getElementById('daystitle').innerHTML = daystitle;
 		
 						
@@ -43,16 +45,22 @@
 							for (var j = 0; j< res.length; j++) {
 								const date = new Date(res[j+1].runingTime);
 								var arrDayStr = ['日','月','火','水','木','金','土']
-								let dateFormat = date.getFullYear()+"/"+(date.getMonth()+1)+"/"+date.getDate()+"("+arrDayStr[date.getDay()]+")";
+								let dateFormat;
+								if(date.getMonth()+1>=10){
+							     dateFormat = date.getFullYear()+"/"+(date.getMonth()+1)+"/"+date.getDate()+"("+arrDayStr[date.getDay()]+")";
+								}
+								else{
+							    dateFormat = date.getFullYear()+"/0"+(date.getMonth()+1)+"/"+date.getDate()+"("+arrDayStr[date.getDay()]+")";
+								}
+								
 								let dateTime = date.getHours();
 								let endingTime = res[j+1].endingTime.split(':',1);
 								
+							
 							for (var y = 0; y <= 6; y++) {
-								const compare = "2022/"+document.getElementById('days' +y).innerHTML;
-								
+								const compare = year+"/"+document.getElementById('days' +y).innerHTML;
 								if(dateFormat==compare){
 								
-									
 								
 								for (var h = 0; h <=24; h++) {
 									
@@ -188,7 +196,9 @@
 			
 			var number = document.getElementById(number);
 			var id =number.previousElementSibling.id;
-			var day = "2022/"+document.getElementById(id).innerHTML;
+			var date = new Date();
+			var year = date.getFullYear();
+			var day = year+"/"+document.getElementById(id).innerHTML;
 		
 			 var url = "facilityForm?facilityNo="+facilityNo+"&day="+day;
 		     var name = "facilityForm";
